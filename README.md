@@ -1,1 +1,1 @@
-# Tallerify Catalog UI
+# Tallerify Admin Panel UI
