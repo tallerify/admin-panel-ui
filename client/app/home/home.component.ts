@@ -4,7 +4,7 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
-    moduleId: module.id.toString(),
+    moduleId: module.id,
     templateUrl: 'home.component.html'
 })
 
@@ -20,11 +20,11 @@ export class HomeComponent implements OnInit {
         this.loadAllUsers();
     }
 
-    deleteUser(id: number) {
+    deleteUser(id: string) {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
     }
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.userService.getAll().subscribe(res => { this.users = res.users; });
     }
 }

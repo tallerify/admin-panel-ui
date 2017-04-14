@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
-    moduleId: module.id.toString(),
+    moduleId: module.id,
     templateUrl: 'login.component.html'
 })
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error._body);
                     this.loading = false;
                 });
     }

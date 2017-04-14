@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AlertService, UserService } from '../_services/index';
 
 @Component({
-    moduleId: module.id.toString(),
+    moduleId: module.id,
     templateUrl: 'register.component.html'
 })
 
@@ -26,7 +26,7 @@ export class RegisterComponent {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error._body);
                     this.loading = false;
                 });
     }
