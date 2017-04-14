@@ -44,3 +44,4 @@ client/app/**/*.js.map
 # Local dirs
 .idea/
 dist/
+server/
