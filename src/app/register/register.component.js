@@ -29,7 +29,7 @@ var RegisterComponent = (function () {
             _this.alertService.success('Registration successful', true);
             _this.router.navigate(['/login']);
         }, function (error) {
-            _this.alertService.error(error._body);
+            _this.alertService.error(JSON.parse(error._body).message);
             _this.loading = false;
         });
     };

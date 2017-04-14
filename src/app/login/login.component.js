@@ -34,7 +34,7 @@ var LoginComponent = (function () {
             .subscribe(function (data) {
             _this.router.navigate([_this.returnUrl]);
         }, function (error) {
-            _this.alertService.error(error._body);
+            _this.alertService.error(JSON.parse(error._body).message);
             _this.loading = false;
         });
     };
