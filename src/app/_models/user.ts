@@ -8,4 +8,5 @@
     email: string;
     birthdate: string;
     images: Array<string>;
+    contacts?: Array<string>;
 }
