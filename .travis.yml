@@ -1,5 +1,5 @@
 before_script:
-- npm install -g karma
+- cd src
 - npm install
 
 script: npm run tsc
