@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { AppConfig } from './app.config';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
@@ -29,7 +28,6 @@ import { RegisterComponent } from './register/index';
         RegisterComponent
     ],
     providers: [
-        AppConfig,
         AuthGuard,
         AlertService,
         AuthenticationService,
