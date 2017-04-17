@@ -7,7 +7,7 @@
     "url": "https://github.com/tallerify/catalog-ui.git"
   },
   "scripts": {
-    "start": "npm run cleandist && npm run moveassets && tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run watchassets\" ",
+    "start": "npm run cleandist && npm run moveassets && npm run tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run watchassets\" ",
     "cleandist": "rm -rf dist/*",
     "moveassets": "rsync -a --include='*.css' --include='*.html' --include='*/' --exclude='*' ./app/ ./dist/",
     "watchassets": "onchange 'app/**/*.css' 'app/**/*.html' -e 'dist/*' -v -- rsync -a --include='*.css' --include='*.html' --include='*/' --exclude='*' --delete ./app/ ./dist/",
