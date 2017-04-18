@@ -2,6 +2,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -17,6 +20,8 @@ import { RegisterComponent } from './register/index';
 @NgModule({
     imports: [
         BrowserModule,
+        MaterialModule.forRoot(),
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
         routing
