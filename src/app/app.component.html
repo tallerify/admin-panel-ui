@@ -13,10 +13,10 @@
         <md-icon>supervisor_account</md-icon>
         <span>Users</span>
       </button>
-      <button md-menu-item disabled>
-        <md-icon>queue_music</md-icon>
-        <span>Tracks</span>
-      </button>
+      <a md-menu-item [routerLink]="['/login']">
+        <md-icon>power_settings_new</md-icon>
+        <span>Logout</span>
+      </a>
     </md-menu>
  </md-toolbar>
 <!-- <nav class="navbar navbar-default navbar-fixed-top">

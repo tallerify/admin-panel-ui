@@ -1,12 +1,20 @@
-﻿<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.userName}}!</h1>
-    <p>You're logged in!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.userName}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
-</div>
+﻿<md-tab-group>
+  <md-tab label="Users">
+    <md-list>
+      <md-list-item *ngFor="let user of users"> 
+        {{user.userName}} ({{user.firstName}} {{user.lastName}}) 
+      </md-list-item>
+    </md-list>
+  </md-tab>
+  <md-tab label="Tab 2">Content 2</md-tab>
+</md-tab-group>
+<!--   <h1>Hi {{currentUser.userName}}!</h1>
+  <p>You're logged in!</p>
+  <h3>All registered users:</h3>
+  <ul>
+    <li *ngFor="let user of users">
+      {{user.userName}} ({{user.firstName}} {{user.lastName}})
+      - <a (click)="deleteUser(user.id)">Delete</a>
+    </li>
+  </ul> -->
+<p><a [routerLink]="['/login']">Logout</a></p>
