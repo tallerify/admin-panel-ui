@@ -29,13 +29,13 @@
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !country.valid }">
           <md-input-container>
-            <input type="text" class="form-control" name="country" [(ngModel)]="model.country" #country="ngModel" requiredmdInput placeholder="Country" />
+            <input type="text" class="form-control" name="country" [(ngModel)]="model.country" #country="ngModel" required mdInput placeholder="Country" />
           </md-input-container>
           <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
           <md-input-container>
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required mdInput placeholder="E-mail!@#!@@#$" />
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required mdInput placeholder="E-mail" />
           </md-input-container>
           <div *ngIf="f.submitted && !email.valid" class="help-block">E-mail is required</div>
         </div>
@@ -55,7 +55,7 @@
       <md-card-actions>
         <button md-raised-button color="primary">Register</button>
         <a md-button [routerLink]="['/login']">Cancel</a>
-      </md-card-actions>  
+      </md-card-actions>
     </md-card>
   </form>
 </div>
