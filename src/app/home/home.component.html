@@ -1,12 +1,71 @@
-﻿<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.userName}}!</h1>
-    <p>You're logged in!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.userName}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
-</div>
+﻿<md-tab-group>
+  <md-tab label="Users">
+    <md-card>
+      <md-card-content>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Username</th>
+              <th class="mdl-data-table__cell--non-numeric">First name</th>
+              <th class="mdl-data-table__cell--non-numeric">Last name</th>
+            </tr>
+          </thead>
+          <tbody>
+<!--             <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockUser</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock</td>
+              <td class="mdl-data-table__cell--non-numeric">User</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockUser2</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock2</td>
+              <td class="mdl-data-table__cell--non-numeric">User2</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockUser3</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock3</td>
+              <td class="mdl-data-table__cell--non-numeric">User3</td> -->
+            </tr>
+            <tr *ngFor="let user of users">
+              <td class="mdl-data-table__cell--non-numeric">{{user.userName}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{user.firstName}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{user.lastName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+  <md-tab label="Tracks">
+    <md-card>
+      <md-card-content>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Track</th>
+              <th class="mdl-data-table__cell--non-numeric">Artist</th>
+              <th class="mdl-data-table__cell--non-numeric">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockTrack</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock Artist</td>
+              <td class="mdl-data-table__cell--non-numeric">2:50</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockTrack2</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock Artist2</td>
+              <td class="mdl-data-table__cell--non-numeric">3:16</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">mockTrack2</td>
+              <td class="mdl-data-table__cell--non-numeric">Mock Artist2</td>
+              <td class="mdl-data-table__cell--non-numeric">1:23</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+</md-tab-group>
