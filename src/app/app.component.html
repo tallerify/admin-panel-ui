@@ -5,14 +5,14 @@
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu #menu="mdMenu">
-      <button md-menu-item>
+      <button md-menu-item [routerLink]="['/']">
         <md-icon>home</md-icon>
         <span>Home</span>
       </button>
-    <button md-menu-item>
+<!--     <button md-menu-item>
         <md-icon>supervisor_account</md-icon>
         <span>Users</span>
-      </button>
+      </button> -->
       <a md-menu-item [routerLink]="['/login']">
         <md-icon>power_settings_new</md-icon>
         <span>Logout</span>
