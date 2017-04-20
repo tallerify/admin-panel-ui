@@ -9,7 +9,7 @@
     "test": "echo \"valeporuntest100%real\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build --env=prod"
   },
   "engines": {
     "node": "7.9.0",
