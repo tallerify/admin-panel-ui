@@ -45,12 +45,14 @@
           </md-input-container>
           <div *ngIf="f.submitted && !birthdate.valid" class="help-block">Birthdate is required</div>
         </div>
+        <!--
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !image.valid }">
           <md-input-container>
             <input type="text" class="form-control" name="image" [(ngModel)]="model.images" #birthdate="ngModel" required mdInput placeholder="Image" />
           </md-input-container>
           <div *ngIf="f.submitted && !image.valid" class="help-block">Image is required</div>
         </div>
+        -->
       </md-card-content>
       <md-card-actions>
         <button md-raised-button color="primary">Register</button>
