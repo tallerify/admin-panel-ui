@@ -19,7 +19,7 @@ import { RegisterComponent } from './register/index';
 @NgModule({
     imports: [
         BrowserModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
