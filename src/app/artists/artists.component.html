@@ -1,3 +1,36 @@
-<p>
-  artists works!
-</p>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Id</th>
+    <th class="mdl-data-table__cell--non-numeric">Name</th>
+    <th class="mdl-data-table__cell--non-numeric">Description</th>
+    <!--<th class="mdl-data-table__cell&#45;&#45;non-numeric">Popularity</th>-->
+    <!--<th class="mdl-data-table__cell&#45;&#45;non-numeric">Genres</th>-->
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let artist of artists">
+    <td class="mdl-data-table__cell--non-numeric">{{artist.id}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{artist.name}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{artist.description}}</td>
+    <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.popularity}}</td>-->
+    <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.genres}}</td>-->
+  </tr>
+
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">mockTrack</td>
+    <td class="mdl-data-table__cell--non-numeric">Mock Artist</td>
+    <td class="mdl-data-table__cell--non-numeric">2:50</td>
+  </tr>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">mockTrack2</td>
+    <td class="mdl-data-table__cell--non-numeric">Mock Artist2</td>
+    <td class="mdl-data-table__cell--non-numeric">3:16</td>
+  </tr>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">mockTrack2</td>
+    <td class="mdl-data-table__cell--non-numeric">Mock Artist2</td>
+    <td class="mdl-data-table__cell--non-numeric">1:23</td>
+  </tr>
+  </tbody>
+</table>

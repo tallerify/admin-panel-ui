@@ -1,7 +1,17 @@
+a, a:visited, a:hover, a:focus{
+    text-decoration: none;
+    color:#000;
+    outline: none;
+}
+
 .jumbotron {
     padding-top: 70px;
 }
 
 .app-toolbar-filler {
   flex: 1 1 auto;
+}
+
+.app-icon {
+    padding: 0 16px;
 }
