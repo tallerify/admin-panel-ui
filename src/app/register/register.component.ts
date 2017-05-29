@@ -19,7 +19,7 @@ export class RegisterComponent {
 
     register() {
         this.loading = true;
-        this.model.images =  ["hola"]; //FIXME pls
+        this.model.images =  ['hola']; //FIXME pls
         this.userService.create(this.model)
             .subscribe(
                 data => {
