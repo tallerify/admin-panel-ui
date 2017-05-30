@@ -1,4 +1,11 @@
 ﻿<md-tab-group>
+  <md-tab label="Artists">
+    <md-card>
+      <md-card-content>
+        <app-artists></app-artists>
+      </md-card-content>
+    </md-card>
+  </md-tab>
   <md-tab label="Users">
     <md-card>
       <md-card-content>
@@ -11,22 +18,6 @@
             </tr>
           </thead>
           <tbody>
-<!--             <tr>
-              <td class="mdl-data-table__cell--non-numeric">mockUser</td>
-              <td class="mdl-data-table__cell--non-numeric">Mock</td>
-              <td class="mdl-data-table__cell--non-numeric">User</td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">mockUser2</td>
-              <td class="mdl-data-table__cell--non-numeric">Mock2</td>
-              <td class="mdl-data-table__cell--non-numeric">User2</td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">mockUser3</td>
-              <td class="mdl-data-table__cell--non-numeric">Mock3</td>
-              <td class="mdl-data-table__cell--non-numeric">User3</td>
-            </tr>
--->
             <tr *ngFor="let user of users">
               <td class="mdl-data-table__cell--non-numeric">{{user.userName}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{user.firstName}}</td>
