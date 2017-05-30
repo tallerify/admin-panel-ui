@@ -10,7 +10,13 @@ import { ArtistService } from '../_services';
 })
 
 export class ArtistsComponent implements OnInit {
-  columns: any[] = [{ name: 'Id' }, { name: 'Name' }, { name: 'Description' }];
+  columns: any[] = [
+    { name: 'Id' },
+    { name: 'Name' },
+    { name: 'Description' },
+    { name: 'Popularity'},
+    { name: 'Genres'},
+    ];
   artists: Artist[] = [];
   constructor(private artistService: ArtistService) { }
 
