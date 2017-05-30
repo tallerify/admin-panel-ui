@@ -12,16 +12,16 @@ export class AuthenticationService {
         return this.http.post(environment.apiUrl + '/tokens', { userName: username, password: password })
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
-                const user = response.json();
-                if (user && user.token) {
+                const token = response.json();
+                if (token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentToken', JSON.stringify(token));
                 }
             });
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentToken');
     }
 }

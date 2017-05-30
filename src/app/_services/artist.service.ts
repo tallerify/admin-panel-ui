@@ -43,9 +43,11 @@ export class ArtistService {
 
     private jwt() {
         // create authorization header with jwt token
-        const currentArtist = JSON.parse(localStorage.getItem('currentArtist'));
-        if (currentArtist && currentArtist.token) {
-            const headers = new Headers({ 'Authorization': 'Bearer ' + currentArtist.token });
+        const currentToken = JSON.parse(localStorage.getItem('currentToken'));
+        console.log(JSON.stringify(currentToken));
+        if (currentToken && currentToken.token) {
+            console.log(JSON.stringify(currentToken))
+            const headers = new Headers({ 'Authorization': 'Bearer ' + currentToken.token });
             return new RequestOptions({ headers: headers });
         }
     }
