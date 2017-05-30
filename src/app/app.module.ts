@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { ArtistsComponent } from './artists/artists.component';
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
+        NgxDatatableModule,
         routing
     ],
     declarations: [
