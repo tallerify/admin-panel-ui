@@ -6,15 +6,23 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dialog-overview-example-dialog',
-  template: `<h1 md-dialog-title>Update Artist</h1>
+  template: `<h1 md-dialog-title>Update Artist
+  <button md-button (click)="deleteArtist()">Delete</button>
+  </h1>
   <div md-dialog-actions><button md-button (click)="updateArtist()">Say hi</button>
   <button md-button (click)="dialogRef.close('Chau')">Close</button>
   </div>`,
+  providers: [ArtistService]
 })
 export class UpdateArtistDialogComponent {
-  constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
+  constructor(
+    public dialogRef: MdDialogRef<UpdateArtistDialogComponent>,
+    private artistService: ArtistService) {}
   updateArtist() {
     console.log('hola gato');
+  }
+  deleteArtist() {
+    console.log('borrando'); // TODO pasarle el id que quiere borrar
   }
 }
 
