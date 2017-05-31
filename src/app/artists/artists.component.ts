@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
+// import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
 import { MdDialog } from '@angular/material';
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  template: `<p>Hi I'm a dialog!</p>`,
+})
+export class UpdateArtistDialogComponent {
+}
 
 @Component({
   selector: 'app-artists',
