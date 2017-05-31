@@ -2,13 +2,20 @@ import { Component, OnInit } from '@angular/core';
 // import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dialog-overview-example-dialog',
-  template: `<p>Hi I'm a dialog!</p>`,
+  template: `<h1 md-dialog-title>Update Artist</h1>
+  <div md-dialog-actions><button md-button (click)="updateArtist()">Say hi</button>
+  <button md-button (click)="dialogRef.close('Chau')">Close</button>
+  </div>`,
 })
 export class UpdateArtistDialogComponent {
+  constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
+  updateArtist() {
+    console.log('hola gato');
+  }
 }
 
 @Component({
