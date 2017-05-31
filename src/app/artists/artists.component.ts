@@ -18,6 +18,8 @@ export class ArtistsComponent implements OnInit {
     { name: 'Genres'},
     ];
   artists: Artist[] = [];
+  temp: Artist[] = [];
+  selected: Artist[] = [];
   constructor(private artistService: ArtistService) { }
 
   ngOnInit() {
@@ -27,7 +29,31 @@ export class ArtistsComponent implements OnInit {
   deleteArtist(id: number) {
     this.artistService.delete(id).subscribe(() => this.loadAllArtists());
   }
+
   private loadAllArtists() {
-    this.artistService.getAll().subscribe(res => { this.artists = res.artists });
+    this.artistService.getAll().subscribe(res => {
+      this.temp = [...res.artists];
+      this.artists = res.artists;
+    });
+  }
+
+  updateFilter(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.temp.filter(d => d.name.toLowerCase().indexOf(val) !== -1 || !val);
+
+    // update the rows
+    this.artists = temp;
+    // Whenever the filter changes, always go back to the first page
+    // this.table.offset = 0;
+  }
+
+  onSelect({ selected }) {
+    console.log('Select Event', selected, this.selected);
+  }
+
+  onActivate(event) {
+    console.log('Activate Event', event);
   }
 }
