@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
+import { MdDialog } from '@angular/material';
 
 @Component({
   selector: 'app-artists',
@@ -20,7 +22,9 @@ export class ArtistsComponent implements OnInit {
   artists: Artist[] = [];
   temp: Artist[] = [];
   selected: Artist[] = [];
-  constructor(private artistService: ArtistService) { }
+  constructor(private artistService: ArtistService, public dialog: MdDialog) {
+
+  }
 
   ngOnInit() {
     this.loadAllArtists();
@@ -51,9 +55,11 @@ export class ArtistsComponent implements OnInit {
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
+    // this.dialog.open(DialogOverviewExampleDialog);
   }
 
   onActivate(event) {
     console.log('Activate Event', event);
+    this.dialog.open(UpdateArtistDialogComponent);
   }
 }

@@ -18,6 +18,8 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ArtistsComponent } from './artists/artists.component';
+import { UpdateArtistDialogComponent } from './artists/updateArtistDialog.component';
+import { DatatableComponent } from './datatable/datatable.component';
 
 @NgModule({
     imports: [
@@ -35,7 +37,9 @@ import { ArtistsComponent } from './artists/artists.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ArtistsComponent
+        ArtistsComponent,
+        UpdateArtistDialogComponent,
+        DatatableComponent
     ],
     providers: [
         AuthGuard,
@@ -43,6 +47,7 @@ import { ArtistsComponent } from './artists/artists.component';
         AuthenticationService,
         UserService
     ],
+    entryComponents: [UpdateArtistDialogComponent],
     bootstrap: [AppComponent]
 })
 
