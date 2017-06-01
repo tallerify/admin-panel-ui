@@ -13,8 +13,13 @@ export class UpdateArtistDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
 
   updateArtist() {
-    console.log(`a ver, le pego al server con ${JSON.stringify(this.currentArtist)}`);
+    console.log(`Le pego al server con ${JSON.stringify(this.currentArtist)}`);
     this.artistService.update(this.currentArtist).subscribe(() => this.dialogRef.close());
+  }
+
+  deleteArtist() {
+    console.log(`Elimino a ${JSON.stringify(this.currentArtist.id)}`);
+    this.artistService.delete(this.currentArtist.id).subscribe(() => this.dialogRef.close());
   }
 }
 
@@ -73,6 +78,7 @@ export class ArtistsComponent implements OnInit {
     let dialogRef:MdDialogRef<UpdateArtistDialogComponent> = this.dialog.open(UpdateArtistDialogComponent);
     dialogRef.componentInstance.currentArtist = this.selected[0];
     dialogRef.componentInstance.artistService = this.artistService;
+    dialogRef.afterClosed().subscribe(() => this.loadAllArtists());
   }
 
   onActivate(event) {

@@ -1,13 +1,16 @@
 <h1 md-dialog-title>Update Artist</h1>
-
 <form>
-		<md-input-container>
-			<input type="text" class="form-control" name="Name" [(ngModel)]="currentArtist.name" #name="ngModel" required mdInput placeholder="Name" />
-		</md-input-container>
-		<md-input-container>
-			<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #name="ngModel" required mdInput placeholder="Description" />
-		</md-input-container>
+	<md-input-container>
+		<input type="text" class="form-control" name="Name" [(ngModel)]="currentArtist.name" #name="ngModel" required mdInput placeholder="Name" />
+	</md-input-container>
+	<md-input-container>
+		<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #name="ngModel" required mdInput placeholder="Description" />
+	</md-input-container>
 </form>
+
+<div md-dialog-actions>
+	<button md-button class="md-warn" (click)="deleteArtist()">Delete</button>
+</div>
 
 <div md-dialog-actions>
 	<button md-button (click)="updateArtist()">Update</button>
