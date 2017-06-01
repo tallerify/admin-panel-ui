@@ -7,12 +7,12 @@
 		<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #name="ngModel" required mdInput placeholder="Description" />
 	</md-input-container>
 </form>
-
 <div md-dialog-actions>
-	<button md-button class="md-warn" (click)="deleteArtist()">Delete</button>
+	<button md-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button (click)="updateArtist()">Update</button>
 </div>
 
+<h1 md-dialog-title>Delete Artist</h1>
 <div md-dialog-actions>
-	<button md-button (click)="updateArtist()">Update</button>
-	<button md-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button (click)="deleteArtist()">Delete</button>
 </div>

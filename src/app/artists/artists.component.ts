@@ -13,12 +13,10 @@ export class UpdateArtistDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
 
   updateArtist() {
-    console.log(`Le pego al server con ${JSON.stringify(this.currentArtist)}`);
     this.artistService.update(this.currentArtist).subscribe(() => this.dialogRef.close());
   }
 
   deleteArtist() {
-    console.log(`Elimino a ${JSON.stringify(this.currentArtist.id)}`);
     this.artistService.delete(this.currentArtist.id).subscribe(() => this.dialogRef.close());
   }
 }
