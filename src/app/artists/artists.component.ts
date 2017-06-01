@@ -14,7 +14,7 @@ export class UpdateArtistDialogComponent {
 
   updateArtist() {
     console.log(`a ver, le pego al server con ${JSON.stringify(this.currentArtist)}`);
-    this.artistService.update(this.currentArtist).subscribe(() => console.log('le pegue'));
+    this.artistService.update(this.currentArtist).subscribe(() => this.dialogRef.close());
   }
 }
 
