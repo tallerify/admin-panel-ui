@@ -9,10 +9,12 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 })
 export class UpdateArtistDialogComponent {
   currentArtist: any = {};
+  artistService: ArtistService;
   constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
 
   updateArtist() {
-    console.log('hola gato');
+    console.log(`a ver, le pego al server con ${JSON.stringify(this.currentArtist)}`);
+    this.artistService.update(this.currentArtist).subscribe(() => console.log('le pegue'));
   }
 }
 
@@ -70,6 +72,7 @@ export class ArtistsComponent implements OnInit {
     console.log(JSON.stringify(this.selected));
     let dialogRef:MdDialogRef<UpdateArtistDialogComponent> = this.dialog.open(UpdateArtistDialogComponent);
     dialogRef.componentInstance.currentArtist = this.selected[0];
+    dialogRef.componentInstance.artistService = this.artistService;
   }
 
   onActivate(event) {
