@@ -1,28 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-// import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dialog-overview-example-dialog',
-  template: `<h1 md-dialog-title>Update Artist
-  <button md-button (click)="deleteArtist()">Delete</button>
-  </h1>
-  <div md-dialog-actions><button md-button (click)="updateArtist()">Say hi</button>
-  <button md-button (click)="dialogRef.close('Chau')">Close</button>
-  </div>`,
-  providers: [ArtistService]
+  templateUrl: 'updateArtistDialog.component.html',
 })
 export class UpdateArtistDialogComponent {
-  constructor(
-    public dialogRef: MdDialogRef<UpdateArtistDialogComponent>,
-    private artistService: ArtistService) {}
+  currentArtist: any = {};
+  artistService: ArtistService;
+  constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
+
   updateArtist() {
-    console.log('hola gato');
+    this.artistService.update(this.currentArtist).subscribe(() => this.dialogRef.close());
   }
+
   deleteArtist() {
-    console.log('borrando'); // TODO pasarle el id que quiere borrar
+    this.artistService.delete(this.currentArtist.id).subscribe(() => this.dialogRef.close());
   }
 }
 
@@ -77,11 +72,14 @@ export class ArtistsComponent implements OnInit {
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
-    // this.dialog.open(DialogOverviewExampleDialog);
+    console.log(JSON.stringify(this.selected));
+    let dialogRef:MdDialogRef<UpdateArtistDialogComponent> = this.dialog.open(UpdateArtistDialogComponent);
+    dialogRef.componentInstance.currentArtist = this.selected[0];
+    dialogRef.componentInstance.artistService = this.artistService;
+    dialogRef.afterClosed().subscribe(() => this.loadAllArtists());
   }
 
   onActivate(event) {
     console.log('Activate Event', event);
-    this.dialog.open(UpdateArtistDialogComponent);
   }
 }
