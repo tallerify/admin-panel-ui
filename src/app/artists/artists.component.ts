@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-// import { UpdateArtistDialogComponent } from './updateArtistDialog.component';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dialog-overview-example-dialog',
-  template: `<h1 md-dialog-title>Update Artist</h1>
-  <div md-dialog-actions><button md-button (click)="updateArtist()">Say hi</button>
-  <button md-button (click)="dialogRef.close('Chau')">Close</button>
-  </div>`,
+  templateUrl: 'updateArtistDialog.component.html',
 })
 export class UpdateArtistDialogComponent {
+  currentArtist: any = {};
   constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
+
   updateArtist() {
     console.log('hola gato');
   }
@@ -69,11 +67,12 @@ export class ArtistsComponent implements OnInit {
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
-    // this.dialog.open(DialogOverviewExampleDialog);
+    console.log(JSON.stringify(this.selected));
+    let dialogRef:MdDialogRef<UpdateArtistDialogComponent> = this.dialog.open(UpdateArtistDialogComponent);
+    dialogRef.componentInstance.currentArtist = this.selected[0];
   }
 
   onActivate(event) {
     console.log('Activate Event', event);
-    this.dialog.open(UpdateArtistDialogComponent);
   }
 }
