@@ -6,7 +6,9 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'updateArtistDialog.component.html',
+  styleUrls: ['./artists.component.css']
 })
+
 export class UpdateArtistDialogComponent {
   currentArtist: any = {};
   artistService: ArtistService;
