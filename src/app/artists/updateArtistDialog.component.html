@@ -21,9 +21,11 @@
 <hr>
 <h1 md-dialog-title>Delete Artist</h1>
 <div md-dialog-content>
-	 <md-icon style="font-size: 14px">warning</md-icon>
-	 Danger zone: The following button will delete the artist.
+
+	 <md-icon class="warning">warning</md-icon>
+	 Danger zone: The following button will delete the artist permanently.
 </div>
 <div md-dialog-actions align="end">
+	<button md-button app-artist-button (click)="dialogRef.close()">Cancel</button>
 	<button md-raised-button color="warn" (click)="deleteArtist()">Delete</button>
 </div>
