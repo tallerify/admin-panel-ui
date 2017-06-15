@@ -13,3 +13,9 @@
 .example-full-width {
   width: 100%;
 }
+
+.filter-form {
+  padding:8px;
+  margin:15px auto;
+  width:30%;
+}

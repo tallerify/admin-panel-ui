@@ -1,17 +1,22 @@
 <div>
   <md-card>
-    <md-card-title>Filter</md-card-title>
+    <md-card-title>Filters</md-card-title>
     <md-card-content>
-      <input
-        type='text'
-        style='padding:8px;margin:15px auto;width:30%;'
-        placeholder='Type to filter the name column...'
-        (keyup)='updateFilter($event)'
-      />
+      <md-select placeholder='Column'>
+        <md-option *ngFor='let column of columns' [value]='column.name'>
+          {{ column.name }}
+        </md-option>
+      </md-select> 
+      <md-input-container>
+        <input mdInput type='text' 
+          placeholder='Type to filter by name' 
+          (keyup)='updateFilter($event)' />
+      </md-input-container>
     </md-card-content>
   </md-card>
   <hr>
   <md-card>
+    <md-card-title>Table</md-card-title>
     <md-card-content>
       <ngx-datatable
         class='material'
