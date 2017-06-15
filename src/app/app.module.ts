@@ -18,7 +18,6 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ArtistsComponent, UpdateArtistDialogComponent } from './artists/artists.component';
-// import { UpdateArtistDialogComponent } from './artists/updateArtistDialog.component';
 import { DatatableComponent } from './datatable/datatable.component';
 
 @NgModule({

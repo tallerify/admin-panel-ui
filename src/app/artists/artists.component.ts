@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Artist } from '../_models';
 import { ArtistService } from '../_services';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import '../../../node_modules/@swimlane/ngx-datatable/release/index.css';
+import '../../../node_modules/@swimlane/ngx-datatable/release/themes/material.css';
+import '../../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
 
 @Component({
   selector: 'dialog-overview-example-dialog',

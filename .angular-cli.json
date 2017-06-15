@@ -20,6 +20,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../node_modules/@swimlane/ngx-datatable/release/themesd/material.css",
+        "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "styles.css"
       ],
       "scripts": [],
