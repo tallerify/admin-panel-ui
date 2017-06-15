@@ -1,23 +1,9 @@
-.app-artist-dialog-filler {
-  flex: 1 1 auto;
-}
-
-.app-artist-button {
-  padding: 0 16px;
-}
-
 .example-form {
   width: 500px;
 }
 
 .example-full-width {
   width: 100%;
-}
-
-.filter-form {
-  padding:8px;
-  margin:15px auto;
-  width:30%;
 }
 
 .warning {
