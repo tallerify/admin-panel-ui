@@ -27,6 +27,21 @@ export class UpdateArtistDialogComponent {
 }
 
 @Component({
+  selector: 'app-create-artist',
+  templateUrl: 'createArtistDialog.component.html',
+  styleUrls: ['./artists.component.css']
+})
+
+export class CreateArtistDialogComponent {
+  artistService: ArtistService;
+  constructor(public dialogRef: MdDialogRef<CreateArtistDialogComponent>) {}
+
+  createArtist() {
+    console.log('Artist created');
+  }
+}
+
+@Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.css'],
@@ -86,5 +101,10 @@ export class ArtistsComponent implements OnInit {
 
   onActivate(event) {
     console.log('Activate Event', event);
+  }
+
+  createArtist(event) {
+    let dialogRef:MdDialogRef<CreateArtistDialogComponent> = this.dialog.open(CreateArtistDialogComponent);
+    dialogRef.afterClosed().subscribe(() => this.loadAllArtists());
   }
 }

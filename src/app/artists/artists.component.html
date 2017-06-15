@@ -1,60 +1,41 @@
-<!--<table class="mdl-data-table mdl-js-data-table mdl-data-table&#45;&#45;selectable mdl-shadow&#45;&#45;2dp">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th class="mdl-data-table__cell&#45;&#45;non-numeric">Id</th>-->
-<!--<th class="mdl-data-table__cell&#45;&#45;non-numeric">Name</th>-->
-<!--<th class="mdl-data-table__cell&#45;&#45;non-numeric">Description</th>-->
-<!--&lt;!&ndash;<th class="mdl-data-table__cell&#45;&#45;non-numeric">Popularity</th>&ndash;&gt;-->
-<!--&lt;!&ndash;<th class="mdl-data-table__cell&#45;&#45;non-numeric">Genres</th>&ndash;&gt;-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr *ngFor="let artist of artists">-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.id}}</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.name}}</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.description}}</td>-->
-<!--&lt;!&ndash;<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.popularity}}</td>&ndash;&gt;-->
-<!--&lt;!&ndash;<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{artist.genres}}</td>&ndash;&gt;-->
-<!--</tr>-->
-
-<!--<tr>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">mockTrack</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">Mock Artist</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">2:50</td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">mockTrack2</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">Mock Artist2</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">3:16</td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">mockTrack2</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">Mock Artist2</td>-->
-<!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">1:23</td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-
 <div>
-  <input
-    type='text'
-    style='padding:8px;margin:15px auto;width:30%;'
-    placeholder='Type to filter the name column...'
-    (keyup)='updateFilter($event)'
-  />
-  <ngx-datatable
-    class='material'
-    [rows]="artists"
-    [columnMode]="'force'"
-    [columns]="columns"
-    [headerHeight]="'auto'"
-    [footerHeight]="'auto'"
-    [rowHeight]="'auto'"
-    [selected]="selected"
-    [selectionType]="'single'"
-    (activate)="onActivate($event)"
-    (select)='onSelect($event)'
-    [limit]="10"
-    >
-  </ngx-datatable>
+  <md-card>
+    <md-card-title>Filters</md-card-title>
+    <md-card-content>
+      <md-select placeholder='Column'>
+        <md-option *ngFor='let column of columns' [value]='column.name'>
+          {{ column.name }}
+        </md-option>
+      </md-select> 
+      <md-input-container>
+        <input mdInput type='text' 
+          placeholder='Type to filter by name' 
+          (keyup)='updateFilter($event)' />
+      </md-input-container>
+    </md-card-content>
+  </md-card>
+  <hr>
+  <md-card>
+    <md-card-title>Table</md-card-title>
+    <md-card-content>
+      <ngx-datatable
+        class='material'
+        [rows]="artists"
+        [columnMode]="'force'"
+        [columns]="columns"
+        [headerHeight]="'auto'"
+        [footerHeight]="'auto'"
+        [rowHeight]="'auto'"
+        [selected]="selected"
+        [selectionType]="'single'"
+        (activate)="onActivate($event)"
+        (select)='onSelect($event)'
+        [limit]="10"
+        >
+      </ngx-datatable>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-fab (click)='createArtist($event)'><md-icon>add</md-icon></button>
+    </md-card-actions>
+  </md-card>
 </div>
