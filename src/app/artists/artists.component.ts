@@ -56,6 +56,7 @@ export class ArtistsComponent implements OnInit {
     { name: 'Popularity'},
     { name: 'Genres'},
     ];
+  selectedColumn: string = this.columns[1].name;
   artists: Artist[] = [];
   temp: Artist[] = [];
   selected: Artist[] = [];

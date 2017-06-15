@@ -1,41 +1,28 @@
 <div>
-  <md-card>
-    <md-card-title>Filters</md-card-title>
-    <md-card-content>
-      <md-select placeholder='Column'>
-        <md-option *ngFor='let column of columns' [value]='column.name'>
-          {{ column.name }}
-        </md-option>
-      </md-select> 
-      <md-input-container>
-        <input mdInput type='text' 
-          placeholder='Type to filter by name' 
-          (keyup)='updateFilter($event)' />
-      </md-input-container>
-    </md-card-content>
-  </md-card>
-  <hr>
-  <md-card>
-    <md-card-title>Table</md-card-title>
-    <md-card-content>
-      <ngx-datatable
-        class='material'
-        [rows]="artists"
-        [columnMode]="'force'"
-        [columns]="columns"
-        [headerHeight]="'auto'"
-        [footerHeight]="'auto'"
-        [rowHeight]="'auto'"
-        [selected]="selected"
-        [selectionType]="'single'"
-        (activate)="onActivate($event)"
-        (select)='onSelect($event)'
-        [limit]="10"
-        >
-      </ngx-datatable>
-    </md-card-content>
-    <md-card-actions align="end">
-      <button md-fab (click)='createArtist($event)'><md-icon>add</md-icon></button>
-    </md-card-actions>
-  </md-card>
+  <md-select placeholder='Column' [(ngModel)]="selectedColumn">
+    <md-option *ngFor='let column of columns' [value]='column.name'>
+      {{ column.name }}
+    </md-option>
+  </md-select>
+  <md-input-container>
+    <input mdInput type='text'
+      placeholder='Type to filter by name'
+      (keyup)='updateFilter($event)' />
+  </md-input-container>
 </div>
+<button md-raised-button color="primary" (click)='createArtist($event)'><md-icon>add</md-icon>New artist</button>
+<ngx-datatable
+  class='material'
+  [rows]="artists"
+  [columnMode]="'force'"
+  [columns]="columns"
+  [headerHeight]="'auto'"
+  [footerHeight]="'auto'"
+  [rowHeight]="'auto'"
+  [selected]="selected"
+  [selectionType]="'single'"
+  (activate)="onActivate($event)"
+  (select)='onSelect($event)'
+  [limit]="10"
+  >
+</ngx-datatable>
