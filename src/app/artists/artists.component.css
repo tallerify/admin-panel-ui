@@ -19,3 +19,8 @@
   margin:15px auto;
   width:30%;
 }
+
+.warning {
+  vertical-align: middle;
+  color: #f1c40f;
+}
