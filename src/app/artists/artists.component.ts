@@ -85,11 +85,23 @@ export class ArtistsComponent implements OnInit {
     });
   }
 
-  updateFilter(event) {
+  updateFilter(columnName, event) {
+    const columnNameLower = columnName.toLowerCase();
     const val = event.target.value.toLowerCase();
+    console.log(columnName);
+    console.log(val);
 
     // filter our data
-    const temp = this.temp.filter(d => d.name.toLowerCase().indexOf(val) !== -1 || !val);
+    const temp = this.temp.filter(d => {
+      if (columnName === 'Name' || columnName === 'Description')
+        return d[columnNameLower].toLowerCase().indexOf(val) !== -1 || !val;
+      if (columnName === 'Id' || columnName === 'Popularity')
+        return d[columnNameLower] == val || !val;
+      if (columnName === 'Genres')
+        return d[columnNameLower].join(',').indexOf(val) !== -1 || !val;
+    });
+
+    console.log(JSON.stringify(temp));
 
     // update the rows
     this.artists = temp;

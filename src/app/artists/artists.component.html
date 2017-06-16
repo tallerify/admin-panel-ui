@@ -8,7 +8,7 @@
     <md-input-container>
       <input mdInput type='text'
              placeholder='Type to filter by name'
-             (keyup)='updateFilter($event)' />
+             (keyup)='updateFilter(selectedColumn, $event)' />
     </md-input-container>
   </div>
   <div class="mdl-layout-spacer"></div>
