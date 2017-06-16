@@ -13,5 +13,5 @@ a, a:visited, a:hover, a:focus{
 }
 
 .app-icon {
-    padding: 0 16px;
+    vertical-align: middle;
 }
