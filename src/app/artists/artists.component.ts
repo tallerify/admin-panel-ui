@@ -39,7 +39,7 @@ export class UpdateArtistDialogComponent {
 })
 
 export class CreateArtistDialogComponent {
-  newArtist: any;
+  newArtist: any = {};
   artistService: ArtistService;
   constructor(public dialogRef: MdDialogRef<CreateArtistDialogComponent>) {}
 
@@ -131,6 +131,7 @@ export class ArtistsComponent implements OnInit {
 
   createArtist(event) {
     let dialogRef:MdDialogRef<CreateArtistDialogComponent> = this.dialog.open(CreateArtistDialogComponent);
+    dialogRef.componentInstance.artistService = this.artistService;
     dialogRef.afterClosed().subscribe(() => this.loadAllArtists());
   }
 }
