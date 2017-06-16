@@ -8,6 +8,5 @@
 })
 
 export class AppComponent {
-    get
     admin = { userName: 'Log in' };
 }
