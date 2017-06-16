@@ -1,7 +1,7 @@
 ﻿ <md-toolbar color="primary">
   <span [routerLink]="['/']"><md-icon class="app-icon">apps</md-icon> Fort Media Player: Admin Panel</span>
   <span class="app-toolbar-filler"></span>
-  <md-icon class="app-icon" [routerLink]="['/login']">exit_to_app</md-icon>
+  <span>{{ admin.userName }} <md-icon class="app-icon" [routerLink]="['/login']">exit_to_app</md-icon></span>
  </md-toolbar>
 
 <!-- main app container -->

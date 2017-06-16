@@ -7,4 +7,7 @@
     styleUrls: [ 'app.component.css' ]
 })
 
-export class AppComponent { }
+export class AppComponent {
+    get
+    admin = { userName: 'Log in' };
+}
