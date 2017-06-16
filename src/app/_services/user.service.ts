@@ -1,11 +1,10 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
-import { environment } from "../../environments/environment";
-
-import { User } from '../_models/index';
-import { Observable } from "rxjs";
-import { Users } from "../_models/users";
+import { environment } from '../../environments/environment';
+import { User } from '../_models';
+import { Users } from '../_models/users';
 
 @Injectable()
 export class UserService {
@@ -44,9 +43,9 @@ export class UserService {
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem('currentToken'));
         if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });
         }
     }

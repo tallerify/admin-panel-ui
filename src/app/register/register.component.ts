@@ -5,7 +5,8 @@ import { AlertService, UserService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'register.component.html'
+    templateUrl: 'register.component.html',
+    styleUrls: ['register.component.css']
 })
 
 export class RegisterComponent {
@@ -19,7 +20,7 @@ export class RegisterComponent {
 
     register() {
         this.loading = true;
-        this.model.images =  ["hola"]; //FIXME pls
+        this.model.images =  ['hola']; //FIXME pls
         this.userService.create(this.model)
             .subscribe(
                 data => {

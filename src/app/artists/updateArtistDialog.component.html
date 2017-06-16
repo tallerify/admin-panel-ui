@@ -1,0 +1,33 @@
+<h1 md-dialog-title>
+	Update Artist
+</h1>
+<div md-dialog-content>
+<form class="example-form">
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Name" [(ngModel)]="currentArtist.name" #name="ngModel" required mdInput placeholder="Name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #description="ngModel" required mdInput placeholder="Description" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<div mdTooltip="Different genres must be separated by commas!" mdTooltipPosition="below">
+			<input type="text" class="form-control" name="Genres" [(ngModel)]="currentArtist.genres" #genres="ngModel" required mdInput placeholder="Genres" />
+		</div>
+	</md-input-container>
+</form>
+</div>
+<div md-dialog-actions align="end">
+	<button md-button app-artist-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button app-artist-button color="primary" (click)="updateArtist()">Update</button>
+</div>
+<hr>
+<h1 md-dialog-title>Delete Artist</h1>
+<div md-dialog-content>
+
+	 <md-icon class="warning">warning</md-icon>
+	 Danger zone: The following button will delete the artist permanently.
+</div>
+<div md-dialog-actions align="end">
+	<button md-button app-artist-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button color="warn" (click)="deleteArtist()">Delete</button>
+</div>
