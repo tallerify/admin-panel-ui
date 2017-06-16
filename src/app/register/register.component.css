@@ -1,0 +1,9 @@
+.register-form {
+  width: 25%;
+  margin: auto;
+  padding: 10px;
+}
+
+.register-form-full-width {
+  width: 100%;
+}
