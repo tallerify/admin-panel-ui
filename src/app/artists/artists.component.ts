@@ -13,12 +13,18 @@ import '../../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
 })
 
 export class UpdateArtistDialogComponent {
-  currentArtist: any = {};
+  currentArtist: any;
   artistService: ArtistService;
   constructor(public dialogRef: MdDialogRef<UpdateArtistDialogComponent>) {}
 
+  private formatCurrentArtist() : Artist {
+    if (this.currentArtist.genres.indexOf(',') > -1) 
+      return {...this.currentArtist, genres: this.currentArtist.genres.split(',')};
+    return this.currentArtist;
+  }
+
   updateArtist() {
-    this.artistService.update(this.currentArtist).subscribe(() => this.dialogRef.close());
+    this.artistService.update(this.formatCurrentArtist()).subscribe(() => this.dialogRef.close());
   }
 
   deleteArtist() {

@@ -1,4 +1,17 @@
 <h1 dialog-title>Create new artist</h1>
+<div md-dialog-content>
+<form class="example-form">
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Name" required mdInput placeholder="Name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Description" required mdInput placeholder="Description" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Genres" required mdInput placeholder="Genres" />
+	</md-input-container>
+</form>
+</div>
 <div md-dialog-actions align="end">
 	<button md-button (click)="dialogRef.close()">Cancel</button>
 	<button md-raised-button color="primary">Create</button>
