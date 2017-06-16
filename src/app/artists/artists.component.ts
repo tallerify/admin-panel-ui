@@ -39,11 +39,18 @@ export class UpdateArtistDialogComponent {
 })
 
 export class CreateArtistDialogComponent {
+  newArtist: any;
   artistService: ArtistService;
   constructor(public dialogRef: MdDialogRef<CreateArtistDialogComponent>) {}
 
+  private formatNewArtist() : Artist {
+    if (this.newArtist.genres.indexOf(',') > -1)
+      return {...this.newArtist, genres: this.newArtist.genres.split(','), images: [ this.newArtist.image ]};
+    return {...this.newArtist, images: [ this.newArtist.image ]};
+  }
+
   createArtist() {
-    console.log('Artist created');
+    this.artistService.create(this.formatNewArtist()).subscribe(() => this.dialogRef.close());
   }
 }
 
