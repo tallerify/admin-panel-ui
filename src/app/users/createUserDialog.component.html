@@ -1,0 +1,21 @@
+<h1 dialog-title>Create new user</h1>
+<div md-dialog-content>
+<form class="example-form">
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="User name" [(ngModel)]="newUser.userName" #name="ngModel" required mdInput placeholder="Username" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="First name" [(ngModel)]="newUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="Last name" [(ngModel)]="newUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+	    <input type="text" class="form-control" name="Country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
+	</md-input-container>
+</form>
+</div>
+<div md-dialog-actions align="end">
+	<button md-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button color="primary" (click)="createUser()">Create</button>
+</div>
