@@ -6,46 +6,39 @@
         <md-input-container class="register-form-full-width">
           <input type="text" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required mdInput placeholder="First name" />
         </md-input-container>
-        <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <md-input-container class="register-form-full-width">
           <input type="text" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required mdInput placeholder="Last name" />
         </md-input-container>
-        <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <md-input-container class="register-form-full-width">
           <input type="text" name="username" [(ngModel)]="model.userName" #username="ngModel" required mdInput placeholder="Username" />
         </md-input-container>
-        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
         <md-input-container class="register-form-full-width">
           <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required mdInput placeholder="Password" />
         </md-input-container>
-        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !country.valid }">
         <md-input-container class="register-form-full-width">
           <input type="text" name="country" [(ngModel)]="model.country" #country="ngModel" required mdInput placeholder="Country" />
         </md-input-container>
-        <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !email.valid }">
         <md-input-container class="register-form-full-width">
           <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required mdInput placeholder="E-mail" />
         </md-input-container>
-        <div *ngIf="f.submitted && !email.valid" class="help-block">E-mail is required</div>
       </div>
       <div [ngClass]="{ 'has-error': f.submitted && !birthdate.valid }">
         <md-input-container class="register-form-full-width">
           <input type="text" name="birthdate" [(ngModel)]="model.birthdate" #birthdate="ngModel" required mdInput placeholder="Birthday" />
         </md-input-container>
-        <div *ngIf="f.submitted && !birthdate.valid" class="help-block">Birthdate is required</div>
       </div>
     </md-card-content>
-    <md-card-actions>
+    <md-card-actions align="end">
       <button md-raised-button color="primary">Register</button>
       <a md-button [routerLink]="['/login']">Cancel</a>
     </md-card-actions>
