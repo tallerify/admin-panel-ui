@@ -44,9 +44,7 @@ export class CreateArtistDialogComponent {
   constructor(public dialogRef: MdDialogRef<CreateArtistDialogComponent>) {}
 
   private formatNewArtist() : Artist {
-    if (this.newArtist.genres.indexOf(',') > -1)
-      return {...this.newArtist, genres: this.newArtist.genres.split(','), images: [ this.newArtist.image ]};
-    return {...this.newArtist, images: [ this.newArtist.image ]};
+    return {...this.newArtist, genres: this.newArtist.genres.split(','), images: [ this.newArtist.image ]};
   }
 
   createArtist() {
