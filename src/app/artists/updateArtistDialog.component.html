@@ -7,11 +7,11 @@
 		<input type="text" class="form-control" name="Name" [(ngModel)]="currentArtist.name" #name="ngModel" required mdInput placeholder="Name" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #name="ngModel" required mdInput placeholder="Description" />
+		<input type="text" class="form-control" name="Description" [(ngModel)]="currentArtist.description" #description="ngModel" required mdInput placeholder="Description" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
 		<div mdTooltip="Different genres must be separated by commas!" mdTooltipPosition="below">
-			<input type="text" class="form-control" name="Genres" [(ngModel)]="currentArtist.genres" #name="ngModel" required mdInput placeholder="Genres" />
+			<input type="text" class="form-control" name="Genres" [(ngModel)]="currentArtist.genres" #genres="ngModel" required mdInput placeholder="Genres" />
 		</div>
 	</md-input-container>
 </form>
