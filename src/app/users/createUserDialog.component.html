@@ -2,16 +2,25 @@
 <div md-dialog-content>
 <form class="example-form">
 	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="User name" [(ngModel)]="newUser.userName" #name="ngModel" required mdInput placeholder="Username" />
+		<input type="text" class="form-control" name="username" [(ngModel)]="newUser.userName" #name="ngModel" required mdInput placeholder="Username" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="First name" [(ngModel)]="newUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
+		<input type="text" class="form-control" name="password" [(ngModel)]="newUser.password" #name="ngModel" required mdInput placeholder="Password" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="Last name" [(ngModel)]="newUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
+		<input type="text" class="form-control" name="firstname" [(ngModel)]="newUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
-	    <input type="text" class="form-control" name="Country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
+		<input type="text" class="form-control" name="lastname" [(ngModel)]="newUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="email" [(ngModel)]="newUser.email" #name="ngModel" required mdInput placeholder="Email" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="birthdate" [(ngModel)]="newUser.birthdate" #name="ngModel" required mdInput placeholder="Birthdate" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+	    <input type="text" class="form-control" name="country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
 	</md-input-container>
 </form>
 </div>
