@@ -17,14 +17,8 @@ export class UpdateUserDialogComponent {
   userService: UserService;
   constructor(public dialogRef: MdDialogRef<UpdateUserDialogComponent>) {}
 
-  private formatCurrentUser() : User {
-    if (this.currentUser.genres.indexOf(',') > -1) 
-      return {...this.currentUser, genres: this.currentUser.genres.split(',')};
-    return this.currentUser;
-  }
-
   updateUser() {
-    this.userService.update(this.formatCurrentUser()).subscribe(() => this.dialogRef.close());
+    this.userService.update(this.currentUser).subscribe(() => this.dialogRef.close());
   }
 
   deleteUser() {
@@ -43,12 +37,8 @@ export class CreateUserDialogComponent {
   userService: UserService;
   constructor(public dialogRef: MdDialogRef<CreateUserDialogComponent>) {}
 
-  private formatNewUser() : User {
-    return {...this.newUser, genres: this.newUser.genres.split(','), images: [ this.newUser.image ]};
-  }
-
   createUser() {
-    this.userService.create(this.formatNewUser()).subscribe(() => this.dialogRef.close());
+    this.userService.create(this.newUser).subscribe(() => this.dialogRef.close());
   }
 }
 
@@ -94,8 +84,6 @@ export class UsersComponent implements OnInit {
   updateFilter(columnName, event) {
     const columnNameLower = columnName.toLowerCase();
     const val = event.target.value.toLowerCase();
-    console.log(columnName);
-    console.log(val);
 
     // filter our data
     const temp = this.temp.filter(d => {
@@ -106,18 +94,10 @@ export class UsersComponent implements OnInit {
       if (columnName === 'Genres')
         return d[columnNameLower].join(',').indexOf(val) !== -1 || !val;
     });
-
-    console.log(JSON.stringify(temp));
-
-    // update the rows
     this.users = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
   }
 
   onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
-    console.log(JSON.stringify(this.selected));
     let dialogRef:MdDialogRef<UpdateUserDialogComponent> = this.dialog.open(UpdateUserDialogComponent);
     dialogRef.componentInstance.currentUser = this.selected[0];
     dialogRef.componentInstance.userService = this.userService;
