@@ -3,40 +3,27 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../environments/environment';
-import { User } from '../_models';
-import { Users } from '../_models/users';
+import { Admin } from '../_models';
 
 @Injectable()
-export class UserService {
+export class AdminService {
     constructor(private http: Http) { }
 
-    getAll(): Observable<Users> {
+    getAll(): Observable<Admin> {
         return this.http
-            .get(environment.apiUrl + '/users', this.jwt())
+            .get(environment.apiUrl + '/admins', this.jwt())
             .map((response: Response) => response.json());
     }
 
-    getById(id: string): Observable<User> {
+    create(admin: Admin): Observable<Admin> {
         return this.http
-            .get(environment.apiUrl + '/users/' + id, this.jwt())
-            .map((response: Response) => response.json());
-    }
-
-    create(user: User): Observable<User> {
-        return this.http
-            .post(environment.apiUrl + '/users', user, this.jwt())
-            .map((response: Response) => response.json());
-    }
-
-    update(user: User): Observable<User> {
-        return this.http
-            .put(environment.apiUrl + '/users/' + user.id, user, this.jwt())
+            .post(environment.apiUrl + '/admins', admin, this.jwt())
             .map((response: Response) => response.json());
     }
 
     delete(id: number) {
         return this.http
-            .delete(environment.apiUrl + '/users/' + id, this.jwt());
+            .delete(environment.apiUrl + '/admins/' + id, this.jwt());
     }
 
     // private helper methods
