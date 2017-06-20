@@ -37,7 +37,17 @@ export class CreateUserDialogComponent {
   userService: UserService;
   constructor(public dialogRef: MdDialogRef<CreateUserDialogComponent>) {}
 
+  imageUpload(event) {
+    let fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+        this.newUser = {...this.newUser, avatar: file};
+        console.log(`file`);
+    }
+  }
+
   createUser() {
+    console.log(`NEW USER: ${JSON.stringify(this.newUser, null, 4)}`);
     this.userService.create(this.newUser).subscribe(() => this.dialogRef.close());
   }
 }

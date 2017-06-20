@@ -22,6 +22,8 @@
 	<md-input-container class="example-full-width">
 	    <input type="text" class="form-control" name="country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
 	</md-input-container>
+	<!--<input type="file" class="ng-hide" multiple name="images" [(ngModel)]="newUser.images" #genres="ngModel" />-->
+	<input type="file" (change)="imageUpload($event)" placeholder="Upload image" accept=".jpg,.jpeg,.png">
 </form>
 </div>
 <div md-dialog-actions align="end">
