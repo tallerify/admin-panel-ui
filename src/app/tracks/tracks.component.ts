@@ -67,6 +67,13 @@ export class TracksComponent implements OnInit {
     { name: 'Artists Ids'},
     { name: 'Popularity'},
     ];
+  albumsFieldsMap: any = {
+    'Id': 'id',
+    'Name': 'userName',
+    'Album Id': 'albumId',
+    'Artists Ids': 'artistsIds',
+    'Popularity': 'popularity',
+  };
   selectedColumn: string = this.columns[1].name;
   tracks: any[] = [];
   temp: Track[] = [];
@@ -86,7 +93,6 @@ export class TracksComponent implements OnInit {
   private loadAllTracks() {
     this.tracks = [];
     this.trackService.getAll().subscribe(res => {
-      this.temp = [...res.tracks];
       console.log(JSON.stringify(res.tracks));
       res.tracks.forEach(responseTrack => {
         this.tracks.push({
@@ -97,27 +103,25 @@ export class TracksComponent implements OnInit {
           popularity: responseTrack.popularity
         });
       });
-      console.log(JSON.stringify(this.tracks));
+      this.temp = [...this.tracks];
     });
   }
 
   updateFilter(columnName, event) {
-    const columnNameLower = columnName.toLowerCase();
+    const columnNameLower = this.albumsFieldsMap[columnName];
     const val = event.target.value.toLowerCase();
-    console.log(columnName);
-    console.log(val);
 
     // filter our data
     const temp = this.temp.filter(d => {
-      if (columnName === 'Name' || columnName === 'Description')
+      if (columnName === 'Name')
         return d[columnNameLower].toLowerCase().indexOf(val) !== -1 || !val;
-      if (columnName === 'Id' || columnName === 'Popularity')
+      if (columnName === 'Id' || columnName === 'Album Id')
         return d[columnNameLower] == val || !val;
-      if (columnName === 'Genres')
-        return d[columnNameLower].join(',').indexOf(val) !== -1 || !val;
+      if (columnName == 'Popularity')
+        d[columnNameLower].toString().indexOf(val) !==  -1 || !val;
+      if (columnName === 'Artists Ids')
+        return d[columnNameLower].indexOf(val) !== -1 || !val;
     });
-
-    console.log(JSON.stringify(temp));
 
     // update the rows
     this.tracks = temp;
