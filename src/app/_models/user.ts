@@ -7,6 +7,6 @@
     country: string;
     email: string;
     birthdate: string;
-    avatar: any;
+    avatar: File;
     contacts?: Array<string>;
 }
