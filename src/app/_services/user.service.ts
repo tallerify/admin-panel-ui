@@ -23,7 +23,6 @@ export class UserService {
     }
 
     create(user: User): Observable<User> {
-        console.log(JSON.stringify(user, null, 4));
         let formData:FormData = new FormData();
         formData.append('userName', user.userName);
         formData.append('password', user.password);
