@@ -38,16 +38,14 @@ export class CreateUserDialogComponent {
   constructor(public dialogRef: MdDialogRef<CreateUserDialogComponent>) {}
 
   imageUpload(event) {
-    let fileList: FileList = event.target.files;
+    const fileList: FileList = event.target.files;
     if(fileList.length > 0) {
-        let file: File = fileList[0];
+        const file: File = fileList[0];
         this.newUser = {...this.newUser, avatar: file};
-        console.log(`file`);
     }
   }
 
   createUser() {
-    console.log(`NEW USER: ${JSON.stringify(this.newUser, null, 4)}`);
     this.userService.create(this.newUser).subscribe(() => this.dialogRef.close());
   }
 }
@@ -61,20 +59,28 @@ export class CreateUserDialogComponent {
 
 export class UsersComponent implements OnInit {
   columns: any[] = [
-    { name: 'Id' },
+    { name: 'Id', value: 'id' },
     { name: 'Username' },
     { name: 'First name' },
     { name: 'Last name' },
-    { name: 'Country'},
+    { name: 'Country' },
     { name: 'Birthdate'},
-    ];
+    { name: 'Email' },
+  ];
+  userFieldsMap: any = {
+    'Id': 'id',
+    'Username': 'userName',
+    'First name': 'firstName',
+    'Last name': 'lastName',
+    'Country': 'country',
+    'Birthdate': 'birthdate',
+    'Email': 'email',
+  };
   selectedColumn: string = this.columns[1].name;
   users: User[] = [];
   temp: User[] = [];
   selected: User[] = [];
-  constructor(private userService: UserService, public dialog: MdDialog) {
-
-  }
+  constructor(private userService: UserService, public dialog: MdDialog) {}
 
   ngOnInit() {
     this.loadAllUsers();
@@ -92,17 +98,14 @@ export class UsersComponent implements OnInit {
   }
 
   updateFilter(columnName, event) {
-    const columnNameLower = columnName.toLowerCase();
+    const columnNameLower = this.userFieldsMap[columnName];
     const val = event.target.value.toLowerCase();
 
     // filter our data
     const temp = this.temp.filter(d => {
-      if (columnName === 'Name' || columnName === 'Description')
+      if (['Username', 'First name', 'Last name', 'Country', 'Birthdate', 'Email'].includes(columnName))
         return d[columnNameLower].toLowerCase().indexOf(val) !== -1 || !val;
-      if (columnName === 'Id' || columnName === 'Popularity')
-        return d[columnNameLower] == val || !val;
-      if (columnName === 'Genres')
-        return d[columnNameLower].join(',').indexOf(val) !== -1 || !val;
+      return d[columnNameLower] == val || !val;
     });
     this.users = temp;
   }
