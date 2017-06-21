@@ -59,7 +59,7 @@ export class CreateUserDialogComponent {
 
 export class UsersComponent implements OnInit {
   columns: any[] = [
-    { name: 'Id', value: 'id' },
+    { name: 'Id'},
     { name: 'Username' },
     { name: 'First name' },
     { name: 'Last name' },
