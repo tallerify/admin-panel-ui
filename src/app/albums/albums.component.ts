@@ -44,6 +44,7 @@ export class UpdateAlbumDialogComponent {
 
 export class CreateAlbumDialogComponent {
   newAlbum: any = {};
+  selectedImageName: string = 'No file chosen';
   albumService: AlbumService;
   constructor(public dialogRef: MdDialogRef<CreateAlbumDialogComponent>) {}
 

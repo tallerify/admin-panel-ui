@@ -4,6 +4,14 @@
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="name" [(ngModel)]="newAlbum.name" #name="ngModel" required mdInput placeholder="Name" />
 	</md-input-container>
+	<button md-raised-button color="primary">
+		<label for="imageToUpload">Choose image</label>
+	</button>
+	<md-input-container>
+		<input mdInput type="text" required placeholder="Image"
+			   value='{{ selectedImageName }}' [readonly]="true"/>
+		<input type="file" id="imageToUpload" (change)="imageUpload($event)" accept=".jpg,.jpeg,.png" style="display:none;">
+	</md-input-container>
 	<md-input-container class="example-full-width">
 		<div mdTooltip="Release date must be a valid date format. Eg 2016-06-21" mdTooltipPosition="below">
 			<input type="text" class="form-control" name="releasedate" [(ngModel)]="newAlbum.release_date" #name="ngModel" required mdInput placeholder="Release date" />
@@ -19,7 +27,6 @@
 			<input type="text" class="form-control" name="artists" [(ngModel)]="newAlbum.artists" #description="ngModel" required mdInput placeholder="Artists" />
 		</div>
 	</md-input-container>
-	<input type="file" (change)="imageUpload($event)" placeholder="Upload image" accept=".jpg,.jpeg,.png">
 </form>
 </div>
 <div md-dialog-actions align="end">
