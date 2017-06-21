@@ -17,8 +17,15 @@ export class UpdateAlbumDialogComponent {
   albumService: AlbumService;
   constructor(public dialogRef: MdDialogRef<UpdateAlbumDialogComponent>) {}
 
+  private formatCurrentAlbum() : Album {
+    return {...this.currentAlbum, 
+      genres: this.currentAlbum.genres.split(','),
+      artists: this.currentAlbum.artists.map(artist => String(artist.id))
+    };
+  }
+
   updateAlbum() {
-    this.albumService.update(this.currentAlbum).subscribe(() => this.dialogRef.close());
+    this.albumService.update(this.formatCurrentAlbum()).subscribe(() => this.dialogRef.close());
   }
 
   deleteAlbum() {
