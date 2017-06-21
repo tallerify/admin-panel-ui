@@ -19,7 +19,7 @@ export class UpdateTrackDialogComponent {
 
   private formatCurrentTrack() : Track {
     if (this.currentTrack.genres.indexOf(',') > -1)
-      return {...this.currentTrack, genres: this.currentTrack.genres.split(',')};
+      return {...this.currentTrack, artists: this.currentTrack.artists.split(',')};
     return this.currentTrack;
   }
 
@@ -44,7 +44,7 @@ export class CreateTrackDialogComponent {
   constructor(public dialogRef: MdDialogRef<CreateTrackDialogComponent>) {}
 
   private formatNewTrack() : Track {
-    return {...this.newTrack, genres: this.newTrack.genres.split(','), images: [ this.newTrack.image ]};
+    return {...this.newTrack, artists: this.newTrack.artists.split(',') };
   }
 
   createTrack() {
@@ -63,12 +63,12 @@ export class TracksComponent implements OnInit {
   columns: any[] = [
     { name: 'Id' },
     { name: 'Name' },
-    { name: 'Album' },
-    { name: 'Artists'},
+    { name: 'Album Id' },
+    { name: 'Artists Ids'},
     { name: 'Popularity'},
     ];
   selectedColumn: string = this.columns[1].name;
-  tracks: Track[] = [];
+  tracks: any[] = [];
   temp: Track[] = [];
   selected: Track[] = [];
   constructor(private trackService: TrackService, public dialog: MdDialog) {
@@ -84,9 +84,20 @@ export class TracksComponent implements OnInit {
   }
 
   private loadAllTracks() {
+    this.tracks = [];
     this.trackService.getAll().subscribe(res => {
       this.temp = [...res.tracks];
-      this.tracks = res.tracks;
+      console.log(JSON.stringify(res.tracks));
+      res.tracks.forEach(responseTrack => {
+        this.tracks.push({
+          id: responseTrack.id,
+          name: responseTrack.name,
+          albumId: responseTrack.album.id,
+          artistsIds: responseTrack.artists.map(artist => artist.id).join(','),
+          popularity: responseTrack.popularity
+        });
+      });
+      console.log(JSON.stringify(this.tracks));
     });
   }
 
