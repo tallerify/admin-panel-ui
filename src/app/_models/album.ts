@@ -2,5 +2,6 @@ export class Album {
     id?: number;
     name: string;
     releaseDate: string;
-    genres: string;
+    genres: Array<string>;
+    artists: Array<string>;
 };
