@@ -23,9 +23,13 @@ export class UserService {
     }
 
     create(user: User): Observable<User> {
-        return this.http
-            .post(environment.apiUrl + '/users', user, this.jwt())
-            .map((response: Response) => response.json());
+        let formData:FormData = new FormData();
+        Object.keys(user).forEach(key => formData.append(key, user[key]));
+        let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`${environment.apiUrl}/users/`, formData, this.jwt())
+            .map(res => res.json());
     }
 
     update(user: User): Observable<User> {

@@ -18,6 +18,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ArtistsComponent, UpdateArtistDialogComponent, CreateArtistDialogComponent } from './artists/artists.component';
+import { UsersComponent, UpdateUserDialogComponent, CreateUserDialogComponent } from './users/users.component';
 import { DatatableComponent } from './datatable/datatable.component';
 
 @NgModule({
@@ -39,6 +40,9 @@ import { DatatableComponent } from './datatable/datatable.component';
         ArtistsComponent,
         UpdateArtistDialogComponent,
         CreateArtistDialogComponent,
+        UsersComponent,
+        UpdateUserDialogComponent,
+        CreateUserDialogComponent,
         DatatableComponent
     ],
     providers: [
@@ -48,7 +52,14 @@ import { DatatableComponent } from './datatable/datatable.component';
         UserService,
         AdminService
     ],
-    entryComponents: [ArtistsComponent, UpdateArtistDialogComponent, CreateArtistDialogComponent],
+    entryComponents: [
+        ArtistsComponent,
+        UpdateArtistDialogComponent,
+        CreateArtistDialogComponent,
+        UsersComponent,
+        UpdateUserDialogComponent,
+        CreateUserDialogComponent
+    ],
     bootstrap: [AppComponent]
 })
 
