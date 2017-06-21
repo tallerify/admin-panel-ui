@@ -1,54 +1,54 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../environments/environment';
-import { User, Users } from '../_models';
+import { Album, Albums } from '../_models';
 
 @Injectable()
-export class UserService {
+export class AlbumService {
     constructor(private http: Http) { }
 
-    getAll(): Observable<Users> {
+    getAll(): Observable<Albums> {
         return this.http
-            .get(environment.apiUrl + '/users', this.jwt())
+            .get(environment.apiUrl + '/albums', this.jwt())
             .map((response: Response) => response.json());
     }
 
-    getById(id: string): Observable<User> {
+    getById(id: string): Observable<Album> {
         return this.http
-            .get(environment.apiUrl + '/users/' + id, this.jwt())
+            .get(environment.apiUrl + '/albums/' + id, this.jwt())
             .map((response: Response) => response.json());
     }
 
-    create(user: User): Observable<User> {
+    create(album: Album): Observable<Album> {
         let formData:FormData = new FormData();
-        Object.keys(user).forEach(key => formData.append(key, user[key]));
+        Object.keys(album).forEach(key => formData.append(key, album[key]));
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(`${environment.apiUrl}/users/`, formData, this.jwt())
+        return this.http.post(`${environment.apiUrl}/albums/`, formData, this.jwt())
             .map(res => res.json());
     }
 
-    update(user: User): Observable<User> {
+    update(album: Album): Observable<Album> {
         return this.http
-            .put(environment.apiUrl + '/users/' + user.id, user, this.jwt())
+            .put(environment.apiUrl + '/albums/' + album.id, album, this.jwt())
             .map((response: Response) => response.json());
     }
 
     delete(id: number) {
         return this.http
-            .delete(environment.apiUrl + '/users/' + id, this.jwt());
+            .delete(environment.apiUrl + '/albums/' + id, this.jwt());
     }
 
     // private helper methods
 
     private jwt() {
         // create authorization header with jwt token
-        const currentUser = JSON.parse(localStorage.getItem('currentToken'));
-        if (currentUser && currentUser.token) {
-            const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        const currentAlbum = JSON.parse(localStorage.getItem('currentToken'));
+        if (currentAlbum && currentAlbum.token) {
+            const headers = new Headers({ 'Authorization': 'Bearer ' + currentAlbum.token });
             return new RequestOptions({ headers: headers });
         }
     }
