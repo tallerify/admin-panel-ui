@@ -1,28 +1,41 @@
-<h1 dialog-title>Create new user</h1>
+<h1 md-dialog-title>Create new user</h1>
 <div md-dialog-content>
 <form class="example-form">
+	<table class="example-full-width" cellspacing="0"><tr>
+		<td><md-input-container class="example-full-width">
+			<input type="text" class="form-control" name="firstname" [(ngModel)]="newUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
+		</md-input-container></td>
+		<td><md-input-container class="example-full-width">
+			<input type="text" class="form-control" name="lastname" [(ngModel)]="newUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
+		</md-input-container></td>
+	</tr></table>
+
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="email" [(ngModel)]="newUser.email" #name="ngModel" required mdInput placeholder="Email" />
+	</md-input-container>
+
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="username" [(ngModel)]="newUser.userName" #name="ngModel" required mdInput placeholder="Username" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="password" [(ngModel)]="newUser.password" #name="ngModel" required mdInput placeholder="Password" />
 	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="firstname" [(ngModel)]="newUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
+
+	<button md-raised-button>
+		<label for="imageToUpload">Choose image</label>
+	</button>
+	<md-input-container>
+		<input mdInput type="text" required placeholder="Image"
+			   value='{{ selectedImageName }}' [readonly]="true"/>
+		<input type="file" id="imageToUpload" (change)="imageUpload($event)" accept=".jpg,.jpeg,.png" style="display:none;">
 	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="lastname" [(ngModel)]="newUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
-	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="email" [(ngModel)]="newUser.email" #name="ngModel" required mdInput placeholder="Email" />
-	</md-input-container>
+
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="birthdate" [(ngModel)]="newUser.birthdate" #name="ngModel" required mdInput placeholder="Birthdate" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
 	    <input type="text" class="form-control" name="country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
 	</md-input-container>
-	<input type="file" (change)="imageUpload($event)" placeholder="Upload image" accept=".jpg,.jpeg,.png">
 </form>
 </div>
 <div md-dialog-actions align="end">

@@ -1,21 +1,26 @@
-<h1 dialog-title>Update user</h1>
+<h1 md-dialog-title>Update User</h1>
 <div md-dialog-content>
 <form class="example-form">
+	<table class="example-full-width" cellspacing="0"><tr>
+		<td><md-input-container class="example-full-width">
+			<input type="text" class="form-control" name="firstname" [(ngModel)]="currentUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
+		</md-input-container></td>
+		<td><md-input-container class="example-full-width">
+			<input type="text" class="form-control" name="lastname" [(ngModel)]="currentUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
+		</md-input-container></td>
+	</tr></table>
+
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" #name="ngModel" required mdInput placeholder="Email" />
+	</md-input-container>
+
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="username" [(ngModel)]="currentUser.userName" #name="ngModel" required mdInput placeholder="Username" />
 	</md-input-container>
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="password" [(ngModel)]="currentUser.password" #name="ngModel" required mdInput placeholder="Password" />
 	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="firstname" [(ngModel)]="currentUser.firstName" #description="ngModel" required mdInput placeholder="First name" />
-	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="lastname" [(ngModel)]="currentUser.lastName" #name="ngModel" required mdInput placeholder="Last name" />
-	</md-input-container>
-	<md-input-container class="example-full-width">
-		<input type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" #name="ngModel" required mdInput placeholder="Email" />
-	</md-input-container>
+	
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="birthdate" [(ngModel)]="currentUser.birthdate" #name="ngModel" required mdInput placeholder="Birthdate" />
 	</md-input-container>

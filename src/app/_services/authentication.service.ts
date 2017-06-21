@@ -9,19 +9,19 @@ export class AuthenticationService {
     constructor(private http: Http) { }
 
     login(username: string, password: string) {
-        return this.http.post(environment.apiUrl + '/tokens', { userName: username, password: password })
+        return this.http.post(environment.apiUrl + '/admins/tokens', { userName: username, password: password })
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
-                const token = response.json();
-                if (token) {
+                const admin = response.json();
+                if (admin) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentToken', JSON.stringify(token));
+                    localStorage.setItem('currentAdmin', JSON.stringify(admin));
                 }
             });
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentToken');
+        localStorage.removeItem('currentAdmin');
     }
 }
