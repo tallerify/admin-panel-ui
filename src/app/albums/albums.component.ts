@@ -51,12 +51,19 @@ export class CreateAlbumDialogComponent {
     const fileList: FileList = event.target.files;
     if(fileList.length > 0) {
         const file: File = fileList[0];
-        this.newAlbum = {...this.newAlbum, avatar: file};
+        this.newAlbum = {...this.newAlbum, picture: file};
     }
   }
 
+  private formatNewAlbum() : Album {
+    return {...this.newAlbum, 
+      genres: this.newAlbum.genres.split(','),
+      artists: this.newAlbum.artists.split(','), 
+    };
+  }
+
   createAlbum() {
-    this.albumService.create(this.newAlbum).subscribe(() => this.dialogRef.close());
+    this.albumService.create(this.formatNewAlbum()).subscribe(() => this.dialogRef.close());
   }
 }
 
