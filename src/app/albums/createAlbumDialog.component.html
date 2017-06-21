@@ -1,0 +1,19 @@
+<h1 dialog-title>Create new album</h1>
+<div md-dialog-content>
+<form class="example-form">
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="name" [(ngModel)]="newAlbum.name" #name="ngModel" required mdInput placeholder="Name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="releasedate" [(ngModel)]="newAlbum.releaseDate" #name="ngModel" required mdInput placeholder="Release date" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="genres" [(ngModel)]="newAlbum.genres" #description="ngModel" required mdInput placeholder="Genres" />
+	</md-input-container>
+	<input type="file" (change)="imageUpload($event)" placeholder="Upload image" accept=".jpg,.jpeg,.png">
+</form>
+</div>
+<div md-dialog-actions align="end">
+	<button md-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button color="primary" (click)="createAlbum()">Create</button>
+</div>
