@@ -24,14 +24,7 @@ export class UserService {
 
     create(user: User): Observable<User> {
         let formData:FormData = new FormData();
-        formData.append('userName', user.userName);
-        formData.append('password', user.password);
-        formData.append('firstName', user.firstName);
-        formData.append('lastName', user.lastName);
-        formData.append('country', user.country);
-        formData.append('birthdate', user.birthdate);
-        formData.append('email', user.email);
-        formData.append('avatar', user.avatar);
+        Object.keys(user).forEach(key => formData.append(key, user[key]));
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });
