@@ -34,6 +34,7 @@ export class UpdateUserDialogComponent {
 
 export class CreateUserDialogComponent {
   newUser: any = {};
+  selectedImageName: string = 'No file chosen';
   userService: UserService;
   constructor(public dialogRef: MdDialogRef<CreateUserDialogComponent>) {}
 
@@ -41,6 +42,8 @@ export class CreateUserDialogComponent {
     const fileList: FileList = event.target.files;
     if(fileList.length > 0) {
         const file: File = fileList[0];
+        this.selectedImageName = file.name;
+        console.log(`You chose ${this.selectedImageName}`);
         this.newUser = {...this.newUser, avatar: file};
     }
   }

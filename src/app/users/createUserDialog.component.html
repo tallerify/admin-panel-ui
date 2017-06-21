@@ -22,7 +22,11 @@
 	<md-input-container class="example-full-width">
 	    <input type="text" class="form-control" name="country" [(ngModel)]="newUser.country" #genres="ngModel" required mdInput placeholder="Country" />
 	</md-input-container>
-	<input type="file" (change)="imageUpload($event)" placeholder="Upload image" accept=".jpg,.jpeg,.png">
+	<button md-raised-button>
+		<label for="imageToUpload">Choose image</label>
+	</button>
+	<p>{{ selectedImageName }}</p>
+	<input type="file" id="imageToUpload" (change)="imageUpload($event)" accept=".jpg,.jpeg,.png" style="display:none;">
 </form>
 </div>
 <div md-dialog-actions align="end">
