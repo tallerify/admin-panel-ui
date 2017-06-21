@@ -18,9 +18,12 @@ export class UpdateAlbumDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateAlbumDialogComponent>) {}
 
   private formatCurrentAlbum() : Album {
+    let genres = this.currentAlbum.genres; 
+    if (this.currentAlbum.genres.indexOf(',') > -1) 
+      genres = this.currentAlbum.genres.split(',');
     return {...this.currentAlbum, 
-      genres: this.currentAlbum.genres.split(','),
-      artists: this.currentAlbum.artists.map(artist => String(artist.id))
+      artists: this.currentAlbum.artists.map(artist => String(artist.id)),
+      genres
     };
   }
 
