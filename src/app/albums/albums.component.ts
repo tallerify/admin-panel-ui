@@ -52,6 +52,7 @@ export class CreateAlbumDialogComponent {
     const fileList: FileList = event.target.files;
     if(fileList.length > 0) {
         const file: File = fileList[0];
+        this.selectedImageName = file.name;
         this.newAlbum = {...this.newAlbum, picture: file};
     }
   }
@@ -79,17 +80,19 @@ export class AlbumsComponent implements OnInit {
   columns: any[] = [
     { name: 'Id', value: 'id' },
     { name: 'Name' },
-    { name: 'Release date' },
+    { name: 'Release Date' },
     { name: 'Genres' },
+    { name: 'Artists Ids' },
+    { name: 'Tracks Ids' },
   ];
   albumFieldsMap: any = {
     'Id': 'id',
     'Name': 'name',
-    'Release date': 'releaseDate',
+    'Release Date': 'release_date',
     'Genres': 'genres',
   };
   selectedColumn: string = this.columns[1].name;
-  albums: Album[] = [];
+  albums: any[] = [];
   temp: Album[] = [];
   selected: Album[] = [];
   constructor(private albumService: AlbumService, public dialog: MdDialog) {}
@@ -103,9 +106,25 @@ export class AlbumsComponent implements OnInit {
   }
 
   private loadAllAlbums() {
+    console.log(JSON.stringify(this.albums, null, 4));
     this.albumService.getAll().subscribe(res => {
+      // const parsedAlbums = res.albums.map(album => {
+      //   return {...album, artists: album.artists.map(artist => artist.name)};
+      // });
       this.temp = [...res.albums];
-      this.albums = res.albums;
+      console.log(JSON.stringify(res.albums, null, 4));
+      this.albums = [];
+      res.albums.forEach(responseAlbum => {
+        this.albums.push({
+          id: responseAlbum.id,
+          releaseDate: responseAlbum.release_date,
+          name: responseAlbum.name,
+          artistsIds: responseAlbum.artists.map(artist => artist.id).join(','),
+          genres: responseAlbum.genres.join(','),
+          tracksIds: responseAlbum.tracks.map(track => track.id).join(',')
+        });
+      });
+      console.log(JSON.stringify(this.albums, null, 4));
     });
   }
 
