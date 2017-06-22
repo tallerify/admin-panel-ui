@@ -49,21 +49,22 @@ export class CreateArtistDialogComponent {
     if(fileList.length > 0) {
       const file: File = fileList[0];
       this.selectedImageName = file.name;
-      console.log(`You chose ${this.selectedImageName}`);
       this.newArtist = {...this.newArtist, picture: file};
     }
   }
 
-  private formatNewArtist() {
+  private formatNewArtist() : Artist {
     console.log(this.newArtist);
-    this.newArtist.genres = this.newArtist.genres.split(',');
-    this.newArtist.images = [ "el request body validator me obliga" ];
+
+    let genres = (this.newArtist.genres.indexOf(',') > -1) ? this.newArtist.genres.split(',') : [this.newArtist.genres];
+    return {...this.newArtist,
+      genres
+    };
   }
 
   createArtist() {
-    this.formatNewArtist();
-    console.log(this.newArtist);
-    this.artistService.create(this.newArtist).subscribe(() => this.dialogRef.close());
+    console.log(this.formatNewArtist());
+    this.artistService.create(this.formatNewArtist()).subscribe(() => this.dialogRef.close());
   }
 }
 
