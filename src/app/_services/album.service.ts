@@ -24,7 +24,13 @@ export class AlbumService {
     create(album: Album): Observable<Album> {
         console.log(JSON.stringify(album, null, 4));
         let formData:FormData = new FormData();
-        Object.keys(album).forEach(key => formData.append(key, album[key]));
+        Object.keys(album).forEach(key => {
+            if(key === 'artists') {
+                album[key].forEach(element => {
+                    formData.append(key, String(element));
+                });
+            } else formData.append(key, album[key]);
+        });
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });

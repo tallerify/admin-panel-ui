@@ -5,7 +5,7 @@ export class Album {
     name: string;
     release_date: string;
     genres: Array<string>;
-    artists: Array<Artist>;
+    artists: Array<any>;
     artistsIds: string;
     tracks: any;
     picture: File;
