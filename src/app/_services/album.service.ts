@@ -26,10 +26,15 @@ export class AlbumService {
         let formData:FormData = new FormData();
         Object.keys(album).forEach(key => {
             if(key === 'artists') {
-                album[key].forEach(element => {
-                    formData.append(key, String(element));
+                album[key].forEach(artistId => {
+                    formData.append(key, String(artistId));
                 });
-            } else formData.append(key, album[key]);
+            } else if (key === 'genres') {
+                album[key].forEach(genre => {
+                    formData.append(key, String(genre));
+                });
+            }
+             else formData.append(key, album[key]);
         });
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
