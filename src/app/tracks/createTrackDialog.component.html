@@ -4,6 +4,16 @@
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="Name" [(ngModel)]="newTrack.name" #name="ngModel" required mdInput placeholder="Name" />
 	</md-input-container>
+
+	<button md-raised-button>
+		<label for="fileToUpload">Choose track file</label>
+	</button>
+	<md-input-container>
+		<input mdInput type="text" required placeholder="File"
+			   value='{{ selectedFileName }}' [readonly]="true"/>
+		<input type="file" id="fileToUpload" (change)="fileUpload($event)" style="display:none;">
+	</md-input-container>
+
 	<md-input-container class="example-full-width">
 		<input type="text" class="form-control" name="AlbumId" [(ngModel)]="newTrack.albumId" #description="ngModel" required mdInput placeholder="Album Id" />
 	</md-input-container>

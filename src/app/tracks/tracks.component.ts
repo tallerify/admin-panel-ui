@@ -42,14 +42,26 @@ export class UpdateTrackDialogComponent {
 
 export class CreateTrackDialogComponent {
   newTrack: any = {};
+  trackFile: File;
+  selectedFileName: string = 'No file chosen';
   trackService: TrackService;
   constructor(public dialogRef: MdDialogRef<CreateTrackDialogComponent>) {}
 
+  fileUpload(event) {
+    const fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+      this.trackFile = fileList[0];
+      this.selectedFileName = this.trackFile.name;
+      console.log(`You chose ${this.selectedFileName}`);
+    }
+  }
+
   private formatNewTrack() : Track {
-    return {...this.newTrack, artists: this.newTrack.artists.split(',') };
+    return {...this.newTrack, artists: this.newTrack.artists.split(','), file: this.trackFile };
   }
 
   createTrack() {
+    console.log(this.formatNewTrack());
     this.trackService.create(this.formatNewTrack()).subscribe(() => this.dialogRef.close());
   }
 }
