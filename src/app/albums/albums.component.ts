@@ -18,17 +18,19 @@ export class UpdateAlbumDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateAlbumDialogComponent>) {}
 
   private formatCurrentAlbum() : Album {
-    let genres = this.currentAlbum.genres; 
-    if (this.currentAlbum.genres.indexOf(',') > -1) 
-      genres = this.currentAlbum.genres.split(',');
-    return {...this.currentAlbum, 
+    console.log(this.currentAlbum);
+    let genres = (this.currentAlbum.genres.indexOf(',') > -1) ? this.currentAlbum.genres.split(',') : [this.currentAlbum.genres];
+    let artists = (this.currentAlbum.artistsIds.indexOf(',') > -1) ? this.currentAlbum.artistsIds.split(',') : [this.currentAlbum.artistsIds];
+
+    return {...this.currentAlbum,
       release_date: this.currentAlbum.releaseDate,
-      artists: this.currentAlbum.artistsIds.split(','),//.map(artistId => artistId)),
+      artists,
       genres
     };
   }
 
   updateAlbum() {
+    console.log(this.formatCurrentAlbum());
     this.albumService.update(this.formatCurrentAlbum()).subscribe(() => this.dialogRef.close());
   }
 
