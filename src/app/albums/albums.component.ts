@@ -106,13 +106,8 @@ export class AlbumsComponent implements OnInit {
   }
 
   private loadAllAlbums() {
-    console.log(JSON.stringify(this.albums, null, 4));
     this.albumService.getAll().subscribe(res => {
-      // const parsedAlbums = res.albums.map(album => {
-      //   return {...album, artists: album.artists.map(artist => artist.name)};
-      // });
       this.temp = [...res.albums];
-      console.log(JSON.stringify(res.albums, null, 4));
       this.albums = [];
       res.albums.forEach(responseAlbum => {
         this.albums.push({
@@ -124,7 +119,6 @@ export class AlbumsComponent implements OnInit {
           tracksIds: responseAlbum.tracks.map(track => track.id).join(',')
         });
       });
-      console.log(JSON.stringify(this.albums, null, 4));
     });
   }
 

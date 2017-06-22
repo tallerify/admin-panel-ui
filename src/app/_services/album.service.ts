@@ -46,7 +46,7 @@ export class AlbumService {
 
     private jwt() {
         // create authorization header with jwt token
-        const currentAlbum = JSON.parse(localStorage.getItem('currentToken'));
+        const currentAlbum = JSON.parse(localStorage.getItem('currentAdmin'));
         if (currentAlbum && currentAlbum.token) {
             const headers = new Headers({ 'Authorization': 'Bearer ' + currentAlbum.token });
             return new RequestOptions({ headers: headers });
