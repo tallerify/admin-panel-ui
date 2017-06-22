@@ -1,0 +1,12 @@
+.example-form {
+  width: 500px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.warning {
+  vertical-align: middle;
+  color: #f1c40f;
+}

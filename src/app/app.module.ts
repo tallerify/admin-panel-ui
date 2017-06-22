@@ -20,6 +20,8 @@ import { RegisterComponent } from './register/index';
 import { ArtistsComponent, UpdateArtistDialogComponent, CreateArtistDialogComponent } from './artists/artists.component';
 import { UsersComponent, UpdateUserDialogComponent, CreateUserDialogComponent } from './users/users.component';
 import { DatatableComponent } from './datatable/datatable.component';
+import { TrackService } from "./_services/track.service";
+import { TracksComponent, UpdateTrackDialogComponent, CreateTrackDialogComponent} from "./tracks/tracks.component";
 
 @NgModule({
     imports: [
@@ -43,6 +45,9 @@ import { DatatableComponent } from './datatable/datatable.component';
         UsersComponent,
         UpdateUserDialogComponent,
         CreateUserDialogComponent,
+        TracksComponent,
+        UpdateTrackDialogComponent,
+        CreateTrackDialogComponent,
         DatatableComponent
     ],
     providers: [
@@ -50,7 +55,8 @@ import { DatatableComponent } from './datatable/datatable.component';
         AlertService,
         AuthenticationService,
         UserService,
-        AdminService
+        AdminService,
+        TrackService,
     ],
     entryComponents: [
         ArtistsComponent,
@@ -58,7 +64,10 @@ import { DatatableComponent } from './datatable/datatable.component';
         CreateArtistDialogComponent,
         UsersComponent,
         UpdateUserDialogComponent,
-        CreateUserDialogComponent
+        CreateUserDialogComponent,
+        TracksComponent,
+        UpdateTrackDialogComponent,
+        CreateTrackDialogComponent,
     ],
     bootstrap: [AppComponent]
 })
