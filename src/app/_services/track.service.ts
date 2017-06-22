@@ -23,9 +23,21 @@ export class TrackService {
     }
 
     create(track: Track): Observable<Track> {
-        return this.http
-            .post(environment.apiUrl + '/tracks', track, this.jwt())
-            .map((response: Response) => response.json());
+        console.log(JSON.stringify(track, null, 4));
+        let formData:FormData = new FormData();
+        Object.keys(track).forEach(key => {
+            if(key === 'artists') {
+                track[key].forEach(artistId => {
+                    formData.append(key, String(artistId));
+                });
+            }
+            else formData.append(key, track[key]);
+        });
+        let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`${environment.apiUrl}/tracks/`, formData, this.jwt())
+            .map(res => res.json());
     }
 
     update(track: Track): Observable<Track> {
