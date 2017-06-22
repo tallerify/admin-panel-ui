@@ -6,12 +6,17 @@
 	</md-input-container>
 	<md-input-container class="example-full-width">
 		<div mdTooltip="Release date must be a valid date format. Eg 2016-06-21" mdTooltipPosition="below">
-			<input type="text" class="form-control" name="releasedate" [(ngModel)]="currentAlbum.release_date" #name="ngModel" required mdInput placeholder="Release date" />
+			<input type="text" class="form-control" name="releasedate" [(ngModel)]="currentAlbum.releaseDate" #name="ngModel" required mdInput placeholder="Release date" />
 		</div>
 	</md-input-container>
 	<md-input-container class="example-full-width">
 		<div mdTooltip="Different genres must be separated by commas!" mdTooltipPosition="below">
 			<input type="text" class="form-control" name="genres" [(ngModel)]="currentAlbum.genres" #description="ngModel" required mdInput placeholder="Genres" />
+		</div>
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<div mdTooltip="Different artists ids must be separated by commas!" mdTooltipPosition="below">
+			<input type="text" class="form-control" name="artists" [(ngModel)]="currentAlbum.artistsIds" #description="ngModel" required mdInput placeholder="Artists" />
 		</div>
 	</md-input-container>
 </form>

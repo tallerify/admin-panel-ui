@@ -22,7 +22,8 @@ export class UpdateAlbumDialogComponent {
     if (this.currentAlbum.genres.indexOf(',') > -1) 
       genres = this.currentAlbum.genres.split(',');
     return {...this.currentAlbum, 
-      artists: this.currentAlbum.artists.map(artist => String(artist.id)),
+      release_date: this.currentAlbum.releaseDate,
+      artists: this.currentAlbum.artistsIds.split(','),//.map(artistId => artistId)),
       genres
     };
   }
@@ -59,8 +60,8 @@ export class CreateAlbumDialogComponent {
 
   private formatNewAlbum() : Album {
     return {...this.newAlbum, 
-      genres: this.newAlbum.genres.split(','),
-      artists: this.newAlbum.artists.split(','), 
+      artists: this.newAlbum.artistsIds.split(',').map(artistId => Number(artistId)),
+      genres: this.newAlbum.genres.split(',')
     };
   }
 
