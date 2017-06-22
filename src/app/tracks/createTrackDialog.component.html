@@ -11,7 +11,7 @@
 	<md-input-container>
 		<input mdInput type="text" required placeholder="File"
 			   value='{{ selectedFileName }}' [readonly]="true"/>
-		<input type="file" id="fileToUpload" (change)="fileUpload($event)" style="display:none;">
+		<input type="file" id="fileToUpload" (change)="fileUpload($event)" accept=".mp3" style="display:none;">
 	</md-input-container>
 
 	<md-input-container class="example-full-width">
