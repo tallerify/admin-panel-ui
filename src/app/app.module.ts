@@ -19,6 +19,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ArtistsComponent, UpdateArtistDialogComponent, CreateArtistDialogComponent } from './artists/artists.component';
 import { UsersComponent, UpdateUserDialogComponent, CreateUserDialogComponent } from './users/users.component';
+import { AlbumsComponent, UpdateAlbumDialogComponent, CreateAlbumDialogComponent } from './albums/albums.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { TrackService } from "./_services/track.service";
 import { TracksComponent, UpdateTrackDialogComponent, CreateTrackDialogComponent} from "./tracks/tracks.component";
@@ -45,6 +46,9 @@ import { TracksComponent, UpdateTrackDialogComponent, CreateTrackDialogComponent
         UsersComponent,
         UpdateUserDialogComponent,
         CreateUserDialogComponent,
+        AlbumsComponent,
+        CreateAlbumDialogComponent,
+        UpdateAlbumDialogComponent,
         TracksComponent,
         UpdateTrackDialogComponent,
         CreateTrackDialogComponent,
@@ -65,6 +69,9 @@ import { TracksComponent, UpdateTrackDialogComponent, CreateTrackDialogComponent
         UsersComponent,
         UpdateUserDialogComponent,
         CreateUserDialogComponent,
+        AlbumsComponent,
+        CreateAlbumDialogComponent,
+        UpdateAlbumDialogComponent,
         TracksComponent,
         UpdateTrackDialogComponent,
         CreateTrackDialogComponent,

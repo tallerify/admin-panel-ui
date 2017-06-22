@@ -1,0 +1,37 @@
+<h1 md-dialog-title>Update Album</h1>
+<div md-dialog-content>
+<form class="example-form">
+	<md-input-container class="example-full-width">
+		<input type="text" class="form-control" name="name" [(ngModel)]="currentAlbum.name" #name="ngModel" required mdInput placeholder="Name" />
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<div mdTooltip="Release date must be a valid date format. Eg 2016-06-21" mdTooltipPosition="below">
+			<input type="text" class="form-control" name="releasedate" [(ngModel)]="currentAlbum.releaseDate" #name="ngModel" required mdInput placeholder="Release date" />
+		</div>
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<div mdTooltip="Different genres must be separated by commas!" mdTooltipPosition="below">
+			<input type="text" class="form-control" name="genres" [(ngModel)]="currentAlbum.genres" #description="ngModel" required mdInput placeholder="Genres" />
+		</div>
+	</md-input-container>
+	<md-input-container class="example-full-width">
+		<div mdTooltip="Different artists ids must be separated by commas!" mdTooltipPosition="below">
+			<input type="text" class="form-control" name="artists" [(ngModel)]="currentAlbum.artistsIds" #description="ngModel" required mdInput placeholder="Artists" />
+		</div>
+	</md-input-container>
+</form>
+</div>
+<div md-dialog-actions align="end">
+	<button md-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button color="primary" (click)="updateAlbum()">Update</button>
+</div>
+<hr>
+<h1 md-dialog-title>Delete Album</h1>
+<div md-dialog-content>
+	 <md-icon class="warning">warning</md-icon>
+	 Danger zone: The following button will delete the album permanently.
+</div>
+<div md-dialog-actions align="end">
+	<button md-button app-album-button (click)="dialogRef.close()">Cancel</button>
+	<button md-raised-button color="warn" (click)="deleteAlbum()">Delete</button>
+</div>
