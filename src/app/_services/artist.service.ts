@@ -23,9 +23,21 @@ export class ArtistService {
     }
 
     create(artist: Artist): Observable<Artist> {
-        return this.http
-            .post(environment.apiUrl + '/artists', artist, this.jwt())
-            .map((response: Response) => response.json());
+        console.log(JSON.stringify(artist, null, 4));
+        let formData:FormData = new FormData();
+        Object.keys(artist).forEach(key => {
+            if (key === 'genres') {
+                artist[key].forEach(genre => {
+                    formData.append(key, String(genre));
+                });
+            }
+            else formData.append(key, artist[key]);
+        });
+        let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`${environment.apiUrl}/artists/`, formData, this.jwt())
+            .map(res => res.json());
     }
 
     update(artist: Artist): Observable<Artist> {

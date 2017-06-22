@@ -55,8 +55,8 @@ export class CreateArtistDialogComponent {
 
   private formatNewArtist() : Artist {
     console.log(this.newArtist);
-
     let genres = (this.newArtist.genres.indexOf(',') > -1) ? this.newArtist.genres.split(',') : [this.newArtist.genres];
+
     return {...this.newArtist,
       genres
     };
