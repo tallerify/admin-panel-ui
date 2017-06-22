@@ -79,7 +79,7 @@ export class CreateAlbumDialogComponent {
 
 export class AlbumsComponent implements OnInit {
   columns: any[] = [
-    { name: 'Id', value: 'id' },
+    { name: 'Id' },
     { name: 'Name' },
     { name: 'Release Date' },
     { name: 'Genres' },
