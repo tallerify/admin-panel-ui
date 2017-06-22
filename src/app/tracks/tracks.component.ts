@@ -70,7 +70,7 @@ export class TracksComponent implements OnInit {
     ];
   albumsFieldsMap: any = {
     'Id': 'id',
-    'Name': 'userName',
+    'Name': 'name',
     'Album Id': 'albumId',
     'Artists Ids': 'artistsIds',
     'Popularity': 'popularity',
@@ -109,7 +109,9 @@ export class TracksComponent implements OnInit {
   }
 
   updateFilter(columnName, event) {
+    console.log(columnName);
     const columnNameLower = this.albumsFieldsMap[columnName];
+    console.log(columnNameLower);
     const val = event.target.value.toLowerCase();
 
     // filter our data
@@ -119,7 +121,7 @@ export class TracksComponent implements OnInit {
       if (columnName === 'Id' || columnName === 'Album Id')
         return d[columnNameLower] == val || !val;
       if (columnName == 'Popularity')
-        d[columnNameLower].toString().indexOf(val) !==  -1 || !val;
+        return d[columnNameLower].toString().indexOf(val) !== -1 || !val;
       if (columnName === 'Artists Ids')
         return d[columnNameLower].indexOf(val) !== -1 || !val;
     });
