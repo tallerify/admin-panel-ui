@@ -40,15 +40,30 @@ export class UpdateArtistDialogComponent {
 
 export class CreateArtistDialogComponent {
   newArtist: any = {};
+  selectedImageName: string = 'No file chosen';
   artistService: ArtistService;
   constructor(public dialogRef: MdDialogRef<CreateArtistDialogComponent>) {}
 
-  private formatNewArtist() : Artist {
-    return {...this.newArtist, genres: this.newArtist.genres.split(','), images: [ this.newArtist.image ]};
+  imageUpload(event) {
+    const fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+      const file: File = fileList[0];
+      this.selectedImageName = file.name;
+      console.log(`You chose ${this.selectedImageName}`);
+      this.newArtist = {...this.newArtist, picture: file};
+    }
+  }
+
+  private formatNewArtist() {
+    console.log(this.newArtist);
+    this.newArtist.genres = this.newArtist.genres.split(',');
+    this.newArtist.images = [ "el request body validator me obliga" ];
   }
 
   createArtist() {
-    this.artistService.create(this.formatNewArtist()).subscribe(() => this.dialogRef.close());
+    this.formatNewArtist();
+    console.log(this.newArtist);
+    this.artistService.create(this.newArtist).subscribe(() => this.dialogRef.close());
   }
 }
 
