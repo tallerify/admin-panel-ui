@@ -18,7 +18,6 @@ export class UpdateAlbumDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateAlbumDialogComponent>) {}
 
   private formatCurrentAlbum() : Album {
-    console.log(this.currentAlbum);
     let genres = (this.currentAlbum.genres.indexOf(',') > -1) ? this.currentAlbum.genres.split(',') : [this.currentAlbum.genres];
     let artists = (this.currentAlbum.artistsIds.indexOf(',') > -1) ? this.currentAlbum.artistsIds.split(',') : [this.currentAlbum.artistsIds];
 
@@ -30,7 +29,6 @@ export class UpdateAlbumDialogComponent {
   }
 
   updateAlbum() {
-    console.log(this.formatCurrentAlbum());
     this.albumService.update(this.formatCurrentAlbum()).subscribe(() => this.dialogRef.close());
   }
 
@@ -61,13 +59,18 @@ export class CreateAlbumDialogComponent {
   }
 
   private formatNewAlbum() : Album {
+    console.log(this.newAlbum);
+    let genres = (this.newAlbum.genres.indexOf(',') > -1) ? this.newAlbum.genres.split(',') : [this.newAlbum.genres];
+    let artists = (this.newAlbum.artistsIds.indexOf(',') > -1) ? this.newAlbum.artistsIds.split(',').map(Number) : [Number(this.newAlbum.artistsIds)];
+
     return {...this.newAlbum, 
-      artists: this.newAlbum.artistsIds.split(',').map(artistId => Number(artistId)),
-      genres: this.newAlbum.genres.split(',')
+      artists,
+      genres
     };
   }
 
   createAlbum() {
+    console.log(this.formatNewAlbum());
     this.albumService.create(this.formatNewAlbum()).subscribe(() => this.dialogRef.close());
   }
 }
