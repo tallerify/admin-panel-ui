@@ -18,9 +18,10 @@ export class UpdateTrackDialogComponent {
   constructor(public dialogRef: MdDialogRef<UpdateTrackDialogComponent>) {}
 
   private formatCurrentTrack() : Track {
-    if (this.currentTrack.genres.indexOf(',') > -1)
-      return {...this.currentTrack, artists: this.currentTrack.artists.split(',')};
-    return this.currentTrack;
+    console.log(this.currentTrack);
+    if (this.currentTrack.artistsIds.indexOf(',') !== -1)
+      return {...this.currentTrack, artists: this.currentTrack.artistsIds.split(',') };
+    // return {...this.currentTrack, artists: [this.currentTrack.artistsIds]};
   }
 
   updateTrack() {
