@@ -19,12 +19,13 @@ export class UpdateTrackDialogComponent {
 
   private formatCurrentTrack() : Track {
     console.log(this.currentTrack);
-    if (this.currentTrack.artistsIds.indexOf(',') !== -1)
-      return {...this.currentTrack, artists: this.currentTrack.artistsIds.split(',') };
-    // return {...this.currentTrack, artists: [this.currentTrack.artistsIds]};
+    if (this.currentTrack.artistsIds.indexOf(',') > -1)
+      return {...this.currentTrack, artists: this.currentTrack.artistsIds.split(',').map(Number), albumId: Number(this.currentTrack.albumId) };
+    return {...this.currentTrack, artists: [ Number(this.currentTrack.artistsIds) ], albumId: Number(this.currentTrack.albumId) };
   }
 
   updateTrack() {
+    console.log(JSON.stringify(this.formatCurrentTrack()));
     this.trackService.update(this.formatCurrentTrack()).subscribe(() => this.dialogRef.close());
   }
 
@@ -109,9 +110,7 @@ export class TracksComponent implements OnInit {
   }
 
   updateFilter(columnName, event) {
-    console.log(columnName);
     const columnNameLower = this.albumsFieldsMap[columnName];
-    console.log(columnNameLower);
     const val = event.target.value.toLowerCase();
 
     // filter our data
