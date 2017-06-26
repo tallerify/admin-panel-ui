@@ -80,6 +80,7 @@ export class TracksComponent implements OnInit {
     { name: 'Album Id' },
     { name: 'Artists Ids'},
     { name: 'Popularity'},
+    { name: 'External Id'},
     ];
   albumsFieldsMap: any = {
     'Id': 'id',
@@ -87,6 +88,7 @@ export class TracksComponent implements OnInit {
     'Album Id': 'albumId',
     'Artists Ids': 'artistsIds',
     'Popularity': 'popularity',
+    'External Id': 'externalId',
   };
   selectedColumn: string = this.columns[1].name;
   tracks: any[] = [];
@@ -107,16 +109,18 @@ export class TracksComponent implements OnInit {
   private loadAllTracks() {
     this.tracks = [];
     this.trackService.getAll().subscribe(res => {
-      console.log(JSON.stringify(res.tracks));
+      console.log(res.tracks);
       res.tracks.forEach(responseTrack => {
         this.tracks.push({
           id: responseTrack.id,
+          externalId: responseTrack.externalId,
           name: responseTrack.name,
           albumId: responseTrack.album.id,
           artistsIds: responseTrack.artists.map(artist => artist.id).join(','),
           popularity: responseTrack.popularity
         });
       });
+      console.log(this.tracks);
       this.temp = [...this.tracks];
     });
   }
@@ -129,7 +133,7 @@ export class TracksComponent implements OnInit {
     const temp = this.temp.filter(d => {
       if (columnName === 'Name')
         return d[columnNameLower].toLowerCase().indexOf(val) !== -1 || !val;
-      if (columnName === 'Id' || columnName === 'Album Id')
+      if (columnName === 'Id' || columnName === 'Album Id' || columnName === 'External Id')
         return d[columnNameLower] == val || !val;
       if (columnName == 'Popularity')
         return d[columnNameLower].toString().indexOf(val) !== -1 || !val;

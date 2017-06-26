@@ -7,4 +7,5 @@ export class Track {
   artists?: Array<Artist>;
   album: any; // TODO Album;
   albumId?: number;
+  externalId?: number;
 };
