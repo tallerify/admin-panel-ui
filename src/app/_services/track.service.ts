@@ -27,9 +27,13 @@ export class TrackService {
         let formData:FormData = new FormData();
         Object.keys(track).forEach(key => {
             if(key === 'artists') {
-                track[key].forEach(artistId => {
-                    formData.append(key, String(artistId));
-                });
+                if (track[key].length === 1) {
+                    formData.append('artists[0]', String(track[key][0]));
+                } else {
+                    track[key].forEach(genre => {
+                        formData.append(key, String(genre));
+                    });
+                }
             }
             else formData.append(key, track[key]);
         });

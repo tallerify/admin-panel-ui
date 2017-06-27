@@ -26,19 +26,28 @@ export class AlbumService {
         let formData:FormData = new FormData();
         Object.keys(album).forEach(key => {
             if(key === 'artists') {
-                album[key].forEach(artistId => {
-                    formData.append(key, String(artistId));
-                });
+                if (album[key].length === 1) {
+                    formData.append('artists[0]', String(album[key][0]));
+                } else {
+                    album[key].forEach(genre => {
+                        formData.append(key, String(genre));
+                    });
+                }
             } else if (key === 'genres') {
-                album[key].forEach(genre => {
-                    formData.append(key, String(genre));
-                });
+                if (album[key].length === 1) {
+                    formData.append('genres[0]', album[key][0]);
+                } else {
+                    album[key].forEach(genre => {
+                        formData.append(key, String(genre));
+                    });
+                }
             }
              else formData.append(key, album[key]);
         });
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });
+        console.log(formData);
         return this.http.post(`${environment.apiUrl}/albums/`, formData, this.jwt())
             .map(res => res.json());
     }

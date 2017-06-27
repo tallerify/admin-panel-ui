@@ -27,12 +27,17 @@ export class ArtistService {
         let formData:FormData = new FormData();
         Object.keys(artist).forEach(key => {
             if (key === 'genres') {
-                artist[key].forEach(genre => {
-                    formData.append(key, String(genre));
-                });
+                if (artist[key].length === 1) {
+                    formData.append('genres[0]', artist[key][0]);
+                } else {
+                    artist[key].forEach(genre => {
+                        formData.append(key, String(genre));
+                    });
+                }
             }
             else formData.append(key, artist[key]);
         });
+        console.log(formData);
         let headers = new Headers();
         headers.append('Content-Type', 'multipart/form-data');
         let options = new RequestOptions({ headers: headers });
